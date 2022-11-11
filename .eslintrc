@@ -46,9 +46,7 @@
     "eol-last": ["error", "always"], // line의 가장 마지막 줄에는 개행 넣기
     "no-tabs": ["error", { "allowIndentationTabs": true }], // \t의 사용을 금지하고 tab키의 사용은 허용
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react/react-in-jsx-scope": "off", // import React from "react"가 필수였던 시기에 필요한 규칙
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "react/react-in-jsx-scope": "off" // import React from "react"가 필수였던 시기에 필요한 규칙
   },
   "settings": {
     "import/resolver": {

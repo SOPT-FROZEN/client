@@ -1,15 +1,12 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Temp } from "./pages/temp";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ExPage from "./pages/ExPage";
 
-function Router() {
+export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Temp />} />
+        <Route path="/" element={<ExPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default Router;

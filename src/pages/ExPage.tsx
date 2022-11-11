@@ -6,7 +6,7 @@ interface iMessage {
   content: string;
 }
 
-export default function Temp() {
+export default function ExPage() {
   const message: iMessage = {
     name: "은형",
     content: "❄️겨울왕국에 오신 것을 환영합니다❄️",
