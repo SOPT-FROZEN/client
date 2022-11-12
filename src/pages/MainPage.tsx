@@ -1,4 +1,4 @@
-// 버거 리스트들을 보여줄 메인페이지
+// 메뉴 전체 보여줄 메인페이지
 import React from "react";
 
 export default function MainPage() {
