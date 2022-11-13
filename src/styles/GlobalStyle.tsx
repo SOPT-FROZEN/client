@@ -6,8 +6,16 @@ const GlobalStyle = createGlobalStyle`
 
     ${reset}
     // 아래에 전역 스타일 추가
-    * {
+    html {
         font-family: 'Apple Sandoll Gothic Neo';
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    input, button {
+        outline: none;
+        border: none;
     }
 `;
 
