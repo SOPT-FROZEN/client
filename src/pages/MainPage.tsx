@@ -3,11 +3,24 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import Filter from "../components/MainPage/Filter";
+import Memu from "../components/MainPage/Memu";
+import { burger_image } from "../assets/image/asset";
 
 const MainBackground = styled.div`
   width: 375px;
   height: auto;
   background-color: ${theme.colors.bg};
+`;
+
+const MemuWrapper = styled.div`
+  width: 335px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
 `;
 
 const BuyButton = styled.button`
@@ -18,13 +31,81 @@ const BuyButton = styled.button`
   color: ${theme.colors.white};
   border-radius: 10px;
   border: none;
+  position: fixed;
+  bottom: 26.06px;
+  z-index: 1000;
+  margin: 0 20px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.25);
 `;
+
+interface ItemProps {
+  menuId: number;
+  menuName: string;
+  image: string;
+  priceOnly: number;
+}
+
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
+  const data: ItemProps[] = [
+    {
+      menuId: 1,
+      menuName: "트리플 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+    {
+      menuId: 2,
+      menuName: "맥스파이시 버거",
+      image: burger_image,
+      priceOnly: 7500,
+    },
+    {
+      menuId: 3,
+      menuName: "페퍼로니 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+    {
+      menuId: 4,
+      menuName: "1955 버거",
+      image: burger_image,
+      priceOnly: 8500,
+    },
+    {
+      menuId: 5,
+      menuName: "트리플 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+    {
+      menuId: 6,
+      menuName: "페퍼로니 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+    {
+      menuId: 7,
+      menuName: "페퍼로니 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+    {
+      menuId: 7,
+      menuName: "페퍼로니 치즈 버거",
+      image: burger_image,
+      priceOnly: 5700,
+    },
+  ];
   return (
     <>
       <MainBackground>
         <Filter />
+        <MemuWrapper>
+          {data.map((item, index) => {
+            return <Memu item={item} key={index} />;
+          })}
+        </MemuWrapper>
         <BuyButton>구매하기 ({quantity})</BuyButton>
       </MainBackground>
     </>

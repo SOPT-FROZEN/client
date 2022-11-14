@@ -48,28 +48,6 @@ const DrinkButton = styled.button`
 `;
 
 export default function Filter() {
-  const data = [
-    {
-      menuId: 1,
-      menuName: "트리플 치즈 버거",
-      priceOnly: 5700,
-    },
-    {
-      menuId: 2,
-      menuName: "페퍼로니 치즈 버거",
-      priceOnly: 5700,
-    },
-    {
-      menuId: 3,
-      menuName: "페퍼로니 치즈 버거",
-      priceOnly: 5700,
-    },
-    {
-      menuId: 4,
-      menuName: "페퍼로니 치즈 버거",
-      priceOnly: 5700,
-    },
-  ];
   return (
     <FilterButtonWrapper>
       <RecommendationButton>추천 메뉴</RecommendationButton>
