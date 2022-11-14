@@ -9,38 +9,38 @@ const FilterButtonWrapper = styled.div`
   margin: 16px 10px 16px 20px;
 `;
 
-const RecommendationButton = styled.button`
+const RecommendationButton = styled.button<{ isClicked: boolean }>`
   width: 74px;
   height: 40px;
-  background-color: #d9d9d9;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body3};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
 `;
 
-const BurgerButton = styled.button`
+const BurgerButton = styled.button<{ isClicked: boolean }>`
   width: 87px;
   height: 40px;
-  background-color: #d9d9d9;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body3};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
 `;
-const SnackButton = styled.button`
+const SnackButton = styled.button<{ isClicked: boolean }>`
   width: 99px;
   height: 40px;
-  background-color: #d9d9d9;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body3};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
 `;
-const DrinkButton = styled.button`
+const DrinkButton = styled.button<{ isClicked: boolean }>`
   width: 46px;
   height: 40px;
-  background-color: #d9d9d9;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body3};
   color: ${theme.colors.white};
   padding: 10px;
@@ -48,12 +48,39 @@ const DrinkButton = styled.button`
 `;
 
 export default function Filter() {
+  const [currentMenu, setCurrentMenu] = useState({
+    recommendation: true,
+    burger: false,
+    snacks: false,
+    drink: false,
+  });
+  const clickRecommendationButton = () => {
+    setCurrentMenu({ ...currentMenu, recommendation: true, burger: false, snacks: false, drink: false });
+  };
+  const clickBurgerButton = () => {
+    setCurrentMenu({ ...currentMenu, recommendation: false, burger: true, snacks: false, drink: false });
+  };
+  const clickSnaksButton = () => {
+    setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: true, drink: false });
+  };
+  const clickDrinkButton = () => {
+    setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: false, drink: true });
+  };
+
   return (
     <FilterButtonWrapper>
-      <RecommendationButton>추천 메뉴</RecommendationButton>
-      <BurgerButton>버거&세트</BurgerButton>
-      <SnackButton>스낵&사이드</SnackButton>
-      <DrinkButton>음료</DrinkButton>
+      <RecommendationButton onClick={clickRecommendationButton} isClicked={currentMenu.recommendation}>
+        추천 메뉴
+      </RecommendationButton>
+      <BurgerButton onClick={clickBurgerButton} isClicked={currentMenu.burger}>
+        버거&세트
+      </BurgerButton>
+      <SnackButton onClick={clickSnaksButton} isClicked={currentMenu.snacks}>
+        스낵&사이드
+      </SnackButton>
+      <DrinkButton onClick={clickDrinkButton} isClicked={currentMenu.drink}>
+        음료
+      </DrinkButton>
     </FilterButtonWrapper>
   );
 }
