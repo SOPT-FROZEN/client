@@ -77,6 +77,35 @@ const CardContentMenu = styled.article`
     border: 1px solid ${theme.colors.gray200};
     border-radius: 5px;
   }
+
+  > div {
+    width: 100%;
+
+    > h3 {
+      margin-top: 11px;
+      margin-left: 14px;
+
+      font: ${theme.fonts.caption1};
+      > span {
+        margin-left: 35px;
+        font: ${theme.fonts.caption1};
+        font-weight: 500;
+        color: ${theme.colors.green};
+      }
+    }
+
+    > ul {
+      margin-top: 11px;
+      margin-left: 30px;
+      list-style: disc outside;
+      font: ${theme.fonts.caption1};
+      font-weight: 500;
+      color: #0a0909;
+      > li:last-child {
+        margin-top: 3px;
+      }
+    }
+  }
 `;
 
 const CardContentFooter = styled.footer`
