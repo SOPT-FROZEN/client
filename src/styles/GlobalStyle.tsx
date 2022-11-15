@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
 
     button{
         background-color: transparent;
-        cursor: pointer;
     }
 `;
 
