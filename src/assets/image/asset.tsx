@@ -1,1 +1,10 @@
 export { default as BannerImage } from "./banner_header.png";
+export { default as BurgerImage } from "./burger_img.png";
+export { default as BackIcon } from "./icn_back.png";
+export { default as AllergyPig } from "./allergy_pig.png";
+export { default as AllergyCow } from "./allergy_cow.png";
+export { default as AllergyChicken } from "./allergy_chicken.png";
+export { default as AllergyLettuce } from "./allergy_lettuce.png";
+export { default as AllergyTomato } from "./allergy_tomato.png";
+export { default as RemoveSet } from "./remove.png";
+export { default as AddSet } from "./add.png";
