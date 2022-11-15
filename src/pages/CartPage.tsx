@@ -19,7 +19,7 @@ const CartWrapper = styled.section`
 const Title = styled.header`
   margin-bottom: 35px;
 
-  font: ${theme.fonts.title1};
+  ${theme.fonts.title1};
 `;
 
 const Card = styled.article`
@@ -42,11 +42,11 @@ const CardHeader = styled.header`
   width: 100%;
 
   > h1 {
-    font: ${theme.fonts.subtitle2};
+    ${theme.fonts.subtitle2};
   }
   > h2 {
     color: ${theme.colors.green};
-    font: ${theme.fonts.subtitle1};
+    ${theme.fonts.subtitle1};
   }
 `;
 
@@ -88,10 +88,10 @@ const CardContentMenu = styled.article`
       margin-top: 11px;
       margin-left: 14px;
 
-      font: ${theme.fonts.caption1};
+      ${theme.fonts.caption1};
       > span {
         margin-left: 35px;
-        font: ${theme.fonts.caption1};
+        ${theme.fonts.caption1};
         font-weight: 500;
         color: ${theme.colors.green};
       }
@@ -101,7 +101,7 @@ const CardContentMenu = styled.article`
       margin-top: 11px;
       margin-left: 30px;
       list-style: disc outside;
-      font: ${theme.fonts.caption1};
+      ${theme.fonts.caption1};
       font-weight: 500;
       color: #0a0909;
       > li:last-child {
@@ -131,7 +131,7 @@ const CardContentFooter = styled.footer`
     border: 1px solid #545454;
     border-radius: 10px;
 
-    font: ${theme.fonts.caption1};
+    ${theme.fonts.caption1};
     color: #545454;
 
     cursor: pointer;
@@ -172,7 +172,7 @@ const CardContentFooter = styled.footer`
     border-right: 0px;
 
     color: ${theme.colors.black};
-    font: ${theme.fonts.subtitle1};
+    ${theme.fonts.subtitle1};
 
     cursor: auto;
   }
@@ -191,7 +191,7 @@ const AddBtn = styled.button`
   border: 1px solid #a5a5a5;
   border-radius: 10px;
 
-  font: ${theme.fonts.caption1};
+  ${theme.fonts.caption1};
   color: ${theme.colors.gray700};
   cursor: pointer;
 `;
@@ -206,13 +206,13 @@ const AddressTimeContainer = styled.article`
   border-radius: 5px;
   > h1 {
     margin-left: 10px;
-    font: ${theme.fonts.title2};
+    ${theme.fonts.title2};
   }
 
   > h2 {
     margin-left: 15px;
     margin-top: 3px;
-    font: ${theme.fonts.body2};
+    ${theme.fonts.body2};
     font-weight: 400;
     color: #6d6d6d;
   }
@@ -245,7 +245,7 @@ const OkBtn = styled.button`
   filter: drop-shadow(0px 3px 13px rgba(0, 0, 0, 0.25));
 
   color: ${theme.colors.white};
-  font: ${theme.fonts.title2};
+  ${theme.fonts.title2};
 
   cursor: pointer;
 `;

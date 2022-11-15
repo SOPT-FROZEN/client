@@ -26,7 +26,7 @@ interface Font {
 
 function FONT({ weight, size, lineHeight, letterSpacing }: Font): string {
   return `
-      font-family: 'Apple Sandoll Gothic Neo';
+      font-family: 'Apple SD Gothic Neo';
       font-weight: ${weight};
       font-size: ${size}px;
       line-height: ${lineHeight}px;
