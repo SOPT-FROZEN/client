@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     // 아래에 전역 스타일 추가
     html {
         font-family: 'Apple Sandoll Gothic Neo';
-        background-color: ${theme.colors.bg};
+        background-color: ${theme.colors.gray700};
     }
     a {
         text-decoration: none;
@@ -18,6 +18,11 @@ const GlobalStyle = createGlobalStyle`
     input, button {
         outline: none;
         border: none;
+    }
+
+    button{
+        background-color: transparent;
+        cursor: pointer;
     }
 `;
 
