@@ -39,7 +39,7 @@ const ChoosedPaymentMethod = styled.button`
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  background-color: #c92a1f;
+  background-color: ${theme.colors.red};
   margin-right: 10px;
   border: none;
 `;
@@ -48,7 +48,7 @@ const ChoosePaymentMethod = styled.div`
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  background-color: #f3f3f3;
+  background-color: ${theme.colors.gray100};
   margin-right: 10px;
 `;
 

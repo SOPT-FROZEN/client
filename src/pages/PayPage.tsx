@@ -76,6 +76,7 @@ const PaymentButton = styled.div`
   height: 50px;
   margin: 24px 20px 33px 20px;
   color: ${theme.colors.white};
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 `;
 export default function PayPage() {
   const price = 9900;
