@@ -9,6 +9,7 @@ const Card = styled.article`
 
   padding: 0px 10px;
   padding-top: 12px;
+  margin-top: 10px;
 
   background-color: ${theme.colors.white};
   border-radius: 5px;
@@ -185,51 +186,71 @@ export default function Cards() {
         },
       ],
     },
+    {
+      title: "트리플 치즈 버거",
+      total: 9900,
+      details: [
+        {
+          set: "라지 세트",
+          price: 9900,
+          amount: 1,
+        },
+        {
+          set: "단품",
+          price: 4500,
+          amount: 2,
+        },
+      ],
+    },
   ]);
   return (
     <div>
-      {orders.map((order, index) => (
-        <Card key={index}>
-          <CardHeader>
-            <h1>{order.title}</h1>
-            <h2>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
-          </CardHeader>
-          {order.details.map((detail, index) => (
-            <CardContent key={index}>
-              <CardContentHeader>
-                <button>
-                  <img src={CartCloseIcon} alt="닫기버튼 아이콘" />
-                </button>
-              </CardContentHeader>
-              <CardContentMenu>
-                <img src={CartMenuImage} alt="메뉴이미지" />
-                <div>
-                  <h3>
-                    {detail.set}
-                    <span>₩ {detail.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                  </h3>
-                  <ul>
-                    <li>사이드 - 후렌치 후라이</li>
-                    <li>음료 - 코카콜라</li>
-                  </ul>
-                </div>
-              </CardContentMenu>
-              <CardContentFooter>
-                <button>옵션 변경</button>
-                <div>
-                  <button className="minus">
-                    <img src={CartMinusIcon} alt="빼기버튼 이미지" />
+      {orders.length ? (
+        orders.map((order, index) => (
+          <Card key={index}>
+            <CardHeader>
+              <h1>{order.title}</h1>
+              <h2>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
+            </CardHeader>
+            {order.details.map((detail, index) => (
+              <CardContent key={index}>
+                <CardContentHeader>
+                  <button>
+                    <img src={CartCloseIcon} alt="닫기버튼 아이콘" />
                   </button>
-                  <button className="amount">{detail.amount}</button>
-                  <button className="plus">
-                    <img src={CartPlusIcon} alt="더하기버튼 이미지" />
-                  </button>
-                </div>
-              </CardContentFooter>
-            </CardContent>
-          ))}
-        </Card>
-      ))}
+                </CardContentHeader>
+                <CardContentMenu>
+                  <img src={CartMenuImage} alt="메뉴이미지" />
+                  <div>
+                    <h3>
+                      {detail.set}
+                      <span>₩ {detail.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                    </h3>
+                    <ul>
+                      <li>사이드 - 후렌치 후라이</li>
+                      <li>음료 - 코카콜라</li>
+                    </ul>
+                  </div>
+                </CardContentMenu>
+                <CardContentFooter>
+                  <button>옵션 변경</button>
+                  <div>
+                    <button className="minus">
+                      <img src={CartMinusIcon} alt="빼기버튼 이미지" />
+                    </button>
+                    <button className="amount">{detail.amount}</button>
+                    <button className="plus">
+                      <img src={CartPlusIcon} alt="더하기버튼 이미지" />
+                    </button>
+                  </div>
+                </CardContentFooter>
+              </CardContent>
+            ))}
+          </Card>
+        ))
+      ) : (
+        <div>담는 데이터 없음</div>
+      )}
     </div>
   );
 }

@@ -18,7 +18,7 @@ const CartWrapper = styled.section`
 `;
 
 const Title = styled.header`
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 
   ${theme.fonts.title1};
 `;
