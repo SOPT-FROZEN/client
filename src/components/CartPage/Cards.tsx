@@ -7,8 +7,8 @@ const Card = styled.article`
   display: flex;
   flex-direction: column;
 
-  padding: 12px 10px;
-  padding-bottom: 15px;
+  padding: 0px 10px;
+  padding-top: 12px;
 
   background-color: ${theme.colors.white};
   border-radius: 5px;
@@ -35,6 +35,7 @@ const CardContent = styled.article`
   display: flex;
   flex-direction: column;
 
+  padding-bottom: 15px;
   width: 100%;
   border-top: 1px solid ${theme.colors.gray200};
 `;
@@ -53,6 +54,7 @@ const CardContentHeader = styled.header`
 
 const CardContentMenu = styled.article`
   display: flex;
+
   > img {
     margin-top: 1.3px;
     width: 104px;
