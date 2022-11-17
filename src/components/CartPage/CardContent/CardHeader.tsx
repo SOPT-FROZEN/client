@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CartCloseIcon } from "../../../assets/image/asset";
+import { iOrder } from "../Cards";
 
 const CardContentHeader = styled.header`
   display: flex;
@@ -14,10 +15,23 @@ const CardContentHeader = styled.header`
   }
 `;
 
-export default function CardHeader() {
+export default function CardHeader(detail: { setOrders: any; menuId: number; setId: number }) {
+  const onClickCloseBtn = (e: React.MouseEvent<HTMLElement>) => {
+    detail.setOrders((prev: iOrder[]) => {
+      //console.log(prev[detail.menuId - 1].details.splice(detail.setId - 1, detail.setId));
+      // prev[detail.menuId - 1].details = prev[detail.menuId - 1].details.splice(detail.setId - 1, detail.setId);
+      const copyPrev = [...prev];
+
+      copyPrev[detail.menuId - 1].details = prev[detail.menuId - 1].details.filter(
+        (item) => item.setId !== detail.setId,
+      );
+
+      return copyPrev;
+    });
+  };
   return (
     <CardContentHeader>
-      <button>
+      <button onClick={onClickCloseBtn}>
         <img src={CartCloseIcon} alt="닫기버튼 아이콘" />
       </button>
     </CardContentHeader>

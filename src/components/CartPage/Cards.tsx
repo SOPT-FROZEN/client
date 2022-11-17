@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import CardFooter from "./CardContent/CardFooter";
@@ -43,12 +43,13 @@ const CardContent = styled.article`
   border-top: 1px solid ${theme.colors.gray200};
 `;
 
-interface iSet {
+export interface iSet {
+  setId: number;
   set: string;
   price: number;
   amount: number;
 }
-interface iOrder {
+export interface iOrder {
   menuId: number;
   title: string;
   total: number;
@@ -63,11 +64,13 @@ export default function Cards() {
       total: 9900,
       details: [
         {
+          setId: 1,
           set: "라지 세트",
           price: 9900,
           amount: 1,
         },
         {
+          setId: 2,
           set: "단품",
           price: 4500,
           amount: 2,
@@ -75,18 +78,19 @@ export default function Cards() {
       ],
     },
   ]);
+
   return (
     <div>
       {orders.length ? (
-        orders.map((order, index) => (
+        orders.map((order: iOrder, index: number) => (
           <Card key={index}>
             <MenuHeader>
               <h1>{order.title}</h1>
               <h2>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
             </MenuHeader>
-            {order.details.map((detail, index) => (
-              <CardContent key={index}>
-                <CardHeader />
+            {order.details.map((detail: iSet) => (
+              <CardContent key={detail.setId}>
+                <CardHeader setOrders={setOrders} menuId={order.menuId} setId={detail.setId} />
                 <CardMenu set={detail.set} price={detail.price} />
                 <CardFooter amount={detail.amount} />
               </CardContent>
