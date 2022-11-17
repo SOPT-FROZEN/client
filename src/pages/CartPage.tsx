@@ -39,19 +39,22 @@ const EmptyContainer = styled.article`
   }
 `;
 
-const AddBtn = styled.button`
+const AddBtnContainer = styled.button`
   width: 100%;
-  margin: 10px;
-  padding: 10px;
-  margin-bottom: 42px;
+  margin-top: 10px;
+  > button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 42px;
 
-  background-color: ${theme.colors.gray300};
-  border: 1px solid #a5a5a5;
-  border-radius: 10px;
+    background-color: ${theme.colors.gray300};
+    border: 1px solid #a5a5a5;
+    border-radius: 10px;
 
-  ${theme.fonts.caption1};
-  color: ${theme.colors.gray700};
-  cursor: pointer;
+    ${theme.fonts.caption1};
+    color: ${theme.colors.gray700};
+    cursor: pointer;
+  }
 `;
 
 const OkBtn = styled.button`
@@ -87,25 +90,25 @@ export interface iOrder {
 
 export default function CartPage() {
   const [orders, setOrders] = useState<iOrder[]>([
-    // {
-    //   menuId: 1,
-    //   title: "트리플 치즈 버거",
-    //   total: 9900,
-    //   details: [
-    //     {
-    //       setId: 1,
-    //       set: "라지 세트",
-    //       price: 9900,
-    //       amount: 1,
-    //     },
-    //     {
-    //       setId: 2,
-    //       set: "단품",
-    //       price: 4500,
-    //       amount: 2,
-    //     },
-    //   ],
-    // },
+    {
+      menuId: 1,
+      title: "트리플 치즈 버거",
+      total: 9900,
+      details: [
+        {
+          setId: 1,
+          set: "라지 세트",
+          price: 9900,
+          amount: 1,
+        },
+        {
+          setId: 2,
+          set: "단품",
+          price: 4500,
+          amount: 2,
+        },
+      ],
+    },
   ]);
   return (
     <CartWrapper>
@@ -113,7 +116,9 @@ export default function CartPage() {
       {orders.length ? (
         <div>
           <Cards orders={orders} setOrders={setOrders} />
-          <AddBtn>항목 추가</AddBtn>
+          <AddBtnContainer>
+            <button>항목 추가</button>
+          </AddBtnContainer>
           <AddressAndTime />
           <OkBtn>주문확인</OkBtn>
         </div>

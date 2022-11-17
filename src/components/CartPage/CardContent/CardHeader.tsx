@@ -26,7 +26,8 @@ export default function CardHeader(detail: { setOrders: any; menuId: number; set
         (item) => item.setId !== detail.setId,
       );
 
-      return copyPrev;
+      // 만약 들어있는 세트가 없으면 아예 삭제
+      return copyPrev[detail.menuId - 1].details.length ? copyPrev : false;
     });
   };
   return (
