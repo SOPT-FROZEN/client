@@ -123,12 +123,13 @@ const DetailBackground = styled.div`
 `;
 
 const DetailTitle = styled.div`
-  height: 44px;
+  height: 24px;
 
-  margin: 0px 20px;
+  padding: 10px 0px;
 
-  font-size: 15px;
-  letter-spacing: -0.5px;
+  margin-left: 20px;
+
+  font-size: ${theme.fonts.body3};
 
   display: flex;
   align-items: center;
@@ -144,8 +145,7 @@ const DetailDividingLine = styled.hr`
   width: 335px;
   color: #d1d1d1;
 
-  display: flex;
-  justify-content: center;
+  margin: 0px 20px;
 `;
 
 const DetailMenuImg = styled.img`
@@ -174,9 +174,7 @@ const DetailInfoBoard = styled.div`
 `;
 
 const DetailMenuName = styled.div`
-  font-size: 17px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  font-size: ${theme.fonts.title3};
 
   margin-top: 10px;
 
@@ -201,9 +199,7 @@ const DetailAllergyIcon = styled.img`
 `;
 
 const AddSetTitle = styled.h1`
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.title2};
 
   margin: 20px 0px 14px 26px;
 `;
@@ -233,8 +229,7 @@ const AddSetBoardTitle = styled.div`
 
   margin-left: 10px;
 
-  font-size: 16px;
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.body1};
 
   border-right: 1px solid #d4d4d4;
 
@@ -247,9 +242,7 @@ const AddSetBoardPrice = styled.div`
 
   color: ${theme.colors.green};
 
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.subtitle1};
 
   margin: 20px 0px 20px 11px;
 
@@ -272,8 +265,7 @@ const SelectedSetDetail = styled.div`
 `;
 
 const SelectedSetName = styled.div`
-  font-size: 16px;
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.subtitle2};
 
   margin: 12px auto 3.94px 10px;
 `;
@@ -286,7 +278,7 @@ const SelectedOptionName = styled.div`
   margin-left: 10px;
   margin-bottom: 3px;
 
-  font-size: 14px;
+  font-size: ${theme.fonts.caption2};
 
   display: flex;
   align-items: center;
@@ -365,8 +357,7 @@ const ChangeOptionBtn = styled.button`
 
   margin: 10px 12px 12px 12px;
 
-  font-size: 14px;
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.caption1};
 
   text-align: center;
 
@@ -400,14 +391,17 @@ const AddToCartPriceWrap = styled.div`
 `;
 
 const AddToCartPriceTitle = styled.h1`
+  font-weight: 700;
   font-size: 22px;
-  font-weight: bold;
+  line-height: 20px;
 
   letter-spacing: -0.5px;
 `;
 
 const AddToCartTotalPrice = styled.h1`
+  font-weight: 800;
   font-size: 22px;
+  line-height: 20px;
   color: ${theme.colors.green};
 
   letter-spacing: -0.5px;
@@ -421,14 +415,13 @@ const AddToCartSetInfoWrap = styled.div`
 `;
 
 const AddToCartSetName = styled.h2`
-  font-size: 16px;
+  font-size: ${theme.fonts.body2};
 `;
 
 const AddToCartSetPrice = styled.h2`
-  font-size: 16px;
   color: ${theme.colors.green};
 
-  letter-spacing: -0.5px;
+  font-size: ${theme.fonts.subtitle1};
 `;
 
 const AddToCartButton = styled.button`
@@ -441,7 +434,7 @@ const AddToCartButton = styled.button`
   background-color: ${theme.colors.yellow};
   box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.25);
 
-  font-size: 18px;
+  font-size: ${theme.fonts.title2};
 
   margin-top: 18.94px;
   margin-bottom: 6.06px;
