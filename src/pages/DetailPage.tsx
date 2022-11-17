@@ -231,7 +231,7 @@ const AddSetBoardTitle = styled.div`
 
   font-size: ${theme.fonts.body1};
 
-  border-right: 1px solid #d4d4d4;
+  border-right: 1px solid ${theme.colors.gray200};
 
   display: flex;
   align-items: center;
@@ -323,9 +323,10 @@ const CountedSetNum = styled.div`
   width: 38px;
   height: 38px;
 
-  font-size: 16px;
   border-top: 1px solid ${theme.colors.gray600};
   border-bottom: 1px solid ${theme.colors.gray600};
+
+  font-size: ${theme.fonts.subtitle1};
 
   display: flex;
   align-items: center;
