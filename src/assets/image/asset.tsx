@@ -3,3 +3,4 @@ export { default as CartMenuImage } from "./cart_menu.png";
 export { default as CartCloseIcon } from "./cart_close.png";
 export { default as CartPlusIcon } from "./cart_plus.png";
 export { default as CartMinusIcon } from "./cart_minus.png";
+export { default as CartEmpty } from "./cart_empty.png";

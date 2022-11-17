@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CartCloseIcon } from "../../../assets/image/asset";
-import { iOrder } from "../Cards";
+import { iOrder } from "../../../pages/CartPage";
 
 const CardContentHeader = styled.header`
   display: flex;
