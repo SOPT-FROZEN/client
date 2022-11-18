@@ -14,7 +14,7 @@ const colors = {
   gray600: "#525252",
   gray700: "#424242",
   gray800: "#0A0909",
-  BLACK: "#000000",
+  black: "#000000",
 } as const;
 
 interface Font {
@@ -26,10 +26,10 @@ interface Font {
 
 function FONT({ weight, size, lineHeight, letterSpacing }: Font): string {
   return `
-      font-family: 'Apple Sandoll Gothic Neo';
+      font-family: 'Apple SD Gothic Neo';
       font-weight: ${weight};
       font-size: ${size}px;
-      line-height: ${lineHeight}px%;
+      line-height: ${lineHeight}px;
       letter-spacing: -0.0${letterSpacing}px;
     `;
 }
