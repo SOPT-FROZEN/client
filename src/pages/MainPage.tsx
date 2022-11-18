@@ -75,7 +75,7 @@ export default function MainPage() {
             return <Memu item={item} key={item.menuId} />;
           })}
         </MemuWrapper>
-        <BuyButton type="button">구매하기 ({quantity})</BuyButton>
+        <BuyButton>구매하기 ({quantity})</BuyButton>
       </MainBackground>
     </>
   );
