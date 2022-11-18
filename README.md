@@ -31,3 +31,11 @@
 - Remove\*\* : 삭제 작업
 
 > ex) Feat: 댓글 기능
+
+## ❄️ 브랜치
+```shell
+UI-main
+UI-detail
+UI-cart
+UI-pay
+```
