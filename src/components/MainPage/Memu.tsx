@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { icon_chicken } from "../../assets/image/asset";
-import { icon_cow } from "../../assets/image/asset";
-import { icon_letture } from "../../assets/image/asset";
-import { icon_pig } from "../../assets/image/asset";
-import { icon_tomato } from "../../assets/image/asset";
+import { AllergyChicken } from "../../assets/image/asset";
+import { AllergyCow } from "../../assets/image/asset";
+import { AllergyLettuce } from "../../assets/image/asset";
+import { AllergyPig } from "../../assets/image/asset";
+import { AllergyTomato } from "../../assets/image/asset";
 import { ItemProps } from "../../pages/MainPage";
 
 interface Props {
@@ -17,6 +17,33 @@ export default function Memu(props: Props) {
   const price = props.item.priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
+  const Allergy = [
+    {
+      name: "pig",
+      src: AllergyPig,
+      altName: "돼지고기 알러지 이미지",
+    },
+    {
+      name: "cow",
+      src: AllergyCow,
+      altName: "소고기 알러지 이미지",
+    },
+    {
+      name: "chicken",
+      src: AllergyChicken,
+      altName: "닭고기 알러지 이미지",
+    },
+    {
+      name: "lettuce",
+      src: AllergyLettuce,
+      altName: "양배추 알러지 이미지",
+    },
+    {
+      name: "tomato",
+      src: AllergyTomato,
+      altName: "토마토 알러지 이미지",
+    },
+  ];
 
   return (
     <>
@@ -24,11 +51,12 @@ export default function Memu(props: Props) {
         <MemuImage src={props.item.image}></MemuImage>
         <MemuName>{props.item.menuName}</MemuName>
         <MemuAllergyList>
-          <MemuAllergy src={icon_chicken} />
-          <MemuAllergy src={icon_cow} />
-          <MemuAllergy src={icon_letture} />
-          <MemuAllergy src={icon_pig} />
-          <MemuAllergy src={icon_tomato} />
+          {Allergy.map(
+            (icon) =>
+              props.item.allergy.includes(icon.name) && (
+                <MemuAllergy key={icon.name} src={icon.src} alt={icon.altName}></MemuAllergy>
+              ),
+          )}
         </MemuAllergyList>
         <MemuPrice>￦{menuPrice}</MemuPrice>
       </MemuBox>
