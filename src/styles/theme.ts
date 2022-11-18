@@ -29,8 +29,8 @@ function FONT({ weight, size, lineHeight, letterSpacing }: Font): string {
       font-family: 'Apple Sandoll Gothic Neo';
       font-weight: ${weight};
       font-size: ${size}px;
-      line-height: ${lineHeight}%;
-      letter-spacing: -0.0${letterSpacing}rem;
+      line-height: ${lineHeight}px%;
+      letter-spacing: -0.0${letterSpacing}px;
     `;
 }
 
