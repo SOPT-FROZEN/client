@@ -1,96 +1,26 @@
 // 결제페이지
 import React from "react";
 import styled from "styled-components";
+import theme from "../styles/theme";
+import PaymentMethod from "../components/PayPage/PaymentMethodContainer";
 
 const PaymentBackground = styled.div`
   width: 375px;
   height: auto;
-  background-color: #f3f3f3;
+  background-color: ${theme.colors.bg};
 `;
 
 const PayTitle = styled.h1`
+  ${theme.fonts.title1}
   font-size: 20px;
-  color: #0a0909;
+  color: ${theme.colors.gray800};
   padding: 17.2px 0 35px 20px;
-  font-weight: bold;
-`;
-
-const PaymentMethodWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const PaymentMethodFrame = styled.div`
-  background-color: white;
-  border-radius: 5px;
-  width: 335px;
-  height: 385px;
-  margin: 0 20px;
-`;
-
-const PaymentMethodTitle = styled.div`
-  font-size: 16px;
-  margin: 21px 0 16px 20px;
-  font-weight: bold;
-`;
-
-const PaymentMethod = styled.button`
-  width: auto;
-  height: atuo;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: white;
-  border: 1px solid #545454;
-  border-radius: 10px;
-  margin: 0 0 16px 20px;
-`;
-
-const ChoosedPaymentMethod = styled.button`
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  background-color: #c92a1f;
-  margin-right: 10px;
-  border: none;
-`;
-
-const ChoosePaymentMethod = styled.div`
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  background-color: #f3f3f3;
-  margin-right: 10px;
-`;
-
-const PaymentText = styled.span`
-  color: #545454;
-  font-size: 14px;
-`;
-
-const CashReceiptButton = styled.button`
-  width: 335px;
-  height: 41px;
-  background-color: white;
-  border: none;
-  display: flex;
-  align-items: center;
-  margin: 16px 20px;
-  border-radius: 5px;
-`;
-
-const CashReceipText = styled.span`
-  color: #545454;
-  font-size: 14px;
-  font-weight: Semibold;
 `;
 
 const PaymentButtonWrapper = styled.div`
   width: 375px;
   height: 205px;
-  background-color: white;
+  background-color: ${theme.colors.white};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,7 +41,7 @@ const TotalPriceTitle = styled.h1`
   font-weight: bold;
 `;
 const TotalPrice = styled.span`
-  color: #59842a;
+  color: ${theme.colors.green};
   font-size: 22px;
   font-weight: bold;
 `;
@@ -127,16 +57,17 @@ const DetailPriceWrapper = styled.div`
 
 const DetailPriceTitle = styled.h1`
   font-size: 16px;
-  color: #0a0909;
+  color: ${theme.colors.gray800};
 `;
 
 const DetailPrice = styled.span`
-  color: #59842a;
+  color: ${theme.colors.green};
   font-size: 22px;
   font-weight: bold;
 `;
 const PaymentButton = styled.div`
-  background-color: #d14938;
+  background-color: ${theme.colors.red};
+  ${theme.fonts.title2}
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -144,9 +75,8 @@ const PaymentButton = styled.div`
   width: 335px;
   height: 50px;
   margin: 24px 20px 33px 20px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
+  color: ${theme.colors.white};
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 `;
 export default function PayPage() {
   const price = 9900;
@@ -157,36 +87,7 @@ export default function PayPage() {
     <>
       <PaymentBackground>
         <PayTitle>결제하기</PayTitle>
-        <PaymentMethodWrapper>
-          <PaymentMethodFrame>
-            <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
-            <PaymentMethod>
-              <ChoosedPaymentMethod />
-              <PaymentText>신용카드/간편결제/기타*</PaymentText>
-            </PaymentMethod>
-            <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
-            <PaymentMethod>
-              <ChoosePaymentMethod />
-              <PaymentText>현금</PaymentText>
-            </PaymentMethod>
-            <PaymentMethod>
-              <ChoosePaymentMethod />
-              <PaymentText>5만원권</PaymentText>
-            </PaymentMethod>
-            <PaymentMethod>
-              <ChoosePaymentMethod />
-              <PaymentText>수표</PaymentText>
-            </PaymentMethod>
-            <PaymentMethod>
-              <ChoosePaymentMethod />
-              <PaymentText>카드(현장단말기 결제)</PaymentText>
-            </PaymentMethod>
-          </PaymentMethodFrame>
-          <CashReceiptButton>
-            <ChoosePaymentMethod />
-            <CashReceipText>현금영수증</CashReceipText>
-          </CashReceiptButton>
-        </PaymentMethodWrapper>
+        <PaymentMethod />
       </PaymentBackground>
       <PaymentButtonWrapper>
         <TotalPriceWrapper>
