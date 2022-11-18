@@ -79,7 +79,7 @@ const ChoosedPaymentMethod = styled.button`
   border: none;
 `;
 
-const ChoosePaymentMethod = styled.h2`
+const ChoosePaymentMethod = styled.button`
   border-radius: 50%;
   width: 18px;
   height: 18px;
