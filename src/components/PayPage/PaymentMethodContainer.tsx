@@ -7,30 +7,30 @@ export default function PaymentMethodContainer() {
     <PaymentMethodWrapper>
       <PaymentMethodFrame>
         <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosedPaymentMethod />
+        <PaymentMethod type="button">
+          <ChoosedPaymentMethod type="button" />
           <PaymentText>신용카드/간편결제/기타*</PaymentText>
         </PaymentMethod>
         <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
+        <PaymentMethod type="button">
+          <ChoosePaymentMethod type="button" />
           <PaymentText>현금</PaymentText>
         </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
+        <PaymentMethod type="button">
+          <ChoosePaymentMethod type="button" />
           <PaymentText>5만원권</PaymentText>
         </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
+        <PaymentMethod type="button">
+          <ChoosePaymentMethod type="button" />
           <PaymentText>수표</PaymentText>
         </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
+        <PaymentMethod type="button">
+          <ChoosePaymentMethod type="button" />
           <PaymentText>카드(현장 단말기 결제)</PaymentText>
         </PaymentMethod>
       </PaymentMethodFrame>
-      <CashReceiptButton>
-        <ChoosePaymentMethod />
+      <CashReceiptButton type="button">
+        <ChoosePaymentMethod type="button" />
         <CashReceipText>현금영수증</CashReceipText>
       </CashReceiptButton>
     </PaymentMethodWrapper>

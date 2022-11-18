@@ -24,7 +24,7 @@ export default function PayPage() {
           <DetailPriceTitle>라지 세트 (1)</DetailPriceTitle>
           <DetailPrice>￦ {detailPrice}</DetailPrice>
         </DetailPriceWrapper>
-        <PaymentButton>결제</PaymentButton>
+        <PaymentButton type="button">결제</PaymentButton>
       </PaymentButtonWrapper>
     </>
   );
