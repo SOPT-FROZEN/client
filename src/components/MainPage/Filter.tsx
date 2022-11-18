@@ -24,16 +24,16 @@ export default function Filter() {
 
   return (
     <FilterButtonWrapper>
-      <RecommendationButton onClick={clickRecommendationButton} isClicked={currentMenu.recommendation}>
+      <RecommendationButton type="button" onClick={clickRecommendationButton} isClicked={currentMenu.recommendation}>
         추천 메뉴
       </RecommendationButton>
-      <BurgerButton onClick={clickBurgerButton} isClicked={currentMenu.burger}>
+      <BurgerButton type="button" onClick={clickBurgerButton} isClicked={currentMenu.burger}>
         버거&세트
       </BurgerButton>
-      <SnackButton onClick={clickSnaksButton} isClicked={currentMenu.snacks}>
+      <SnackButton type="button" onClick={clickSnaksButton} isClicked={currentMenu.snacks}>
         스낵&사이드
       </SnackButton>
-      <DrinkButton onClick={clickDrinkButton} isClicked={currentMenu.drink}>
+      <DrinkButton type="button" onClick={clickDrinkButton} isClicked={currentMenu.drink}>
         음료
       </DrinkButton>
     </FilterButtonWrapper>
