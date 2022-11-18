@@ -53,8 +53,8 @@ export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<Set
             <h1>{order.title}</h1>
             <h2>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
           </MenuHeader>
-          {order.details.map((detail: iSet) => (
-            <CardContent key={detail.setId}>
+          {order.details?.map((detail: iSet, index: number) => (
+            <CardContent key={index}>
               <CardHeader setOrders={props.setOrders} menuId={order.menuId} setId={detail.setId} />
               <CardMenu set={detail.set} price={detail.price} />
               <CardFooter amount={detail.amount} />

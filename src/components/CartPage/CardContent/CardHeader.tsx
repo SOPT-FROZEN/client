@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { CartCloseIcon } from "../../../assets/image/asset";
 import { iOrder } from "../../../pages/CartPage";
@@ -16,18 +16,20 @@ const CardContentHeader = styled.header`
 `;
 
 export default function CardHeader(detail: { setOrders: any; menuId: number; setId: number }) {
-  const onClickCloseBtn = (e: React.MouseEvent<HTMLElement>) => {
+  const onClickCloseBtn = () => {
     detail.setOrders((prev: iOrder[]) => {
-      //console.log(prev[detail.menuId - 1].details.splice(detail.setId - 1, detail.setId));
-      // prev[detail.menuId - 1].details = prev[detail.menuId - 1].details.splice(detail.setId - 1, detail.setId);
-      const copyPrev = [...prev];
+      let copyPrev = [...prev];
 
-      copyPrev[detail.menuId - 1].details = prev[detail.menuId - 1].details.filter(
+      copyPrev[detail.menuId - 1].details = prev[detail.menuId - 1].details?.filter(
         (item) => item.setId !== detail.setId,
       );
 
-      // 만약 들어있는 세트가 없으면 아예 삭제
-      return copyPrev[detail.menuId - 1].details.length ? copyPrev : false;
+      if (!copyPrev[detail.menuId - 1].details?.length) {
+        // 만약 들어있는 세트가 없으면 아예 삭제
+        copyPrev = [...prev].filter((item) => item.menuId !== detail.menuId);
+      }
+
+      return copyPrev;
     });
   };
   return (
