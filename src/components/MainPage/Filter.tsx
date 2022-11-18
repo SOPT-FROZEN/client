@@ -40,7 +40,7 @@ export default function Filter() {
   );
 }
 
-const FilterButtonWrapper = styled.div`
+const FilterButtonWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

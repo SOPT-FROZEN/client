@@ -96,7 +96,7 @@ const MainBackground = styled.div`
   background-color: ${theme.colors.bg};
 `;
 
-const MemuWrapper = styled.div`
+const MemuWrapper = styled.section`
   width: 335px;
   height: auto;
   display: flex;

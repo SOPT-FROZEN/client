@@ -64,7 +64,7 @@ export default function Memu(props: Props) {
   );
 }
 
-const MemuBox = styled.div`
+const MemuBox = styled.article`
   width: 164px;
   height: 252px;
   background-color: ${theme.colors.white};
@@ -82,7 +82,7 @@ const MemuImage = styled.img`
   margin: 10px 9px 13px 9px;
 `;
 
-const MemuName = styled.div`
+const MemuName = styled.h1`
   margin-left: 10px;
   ${theme.fonts.caption1};
   color: ${theme.colors.gray800};
@@ -91,7 +91,7 @@ const MemuName = styled.div`
   height: 20px;
 `;
 
-const MemuAllergyList = styled.div`
+const MemuAllergyList = styled.section`
   margin-left: 10px;
   margin-bottom: 25px;
   height: 20px;
@@ -102,7 +102,7 @@ const MemuAllergy = styled.img`
   height: 18px;
 `;
 
-const MemuPrice = styled.div`
+const MemuPrice = styled.h2`
   margin-left: 10px;
   ${theme.fonts.subtitle1};
   color: ${theme.colors.green};
