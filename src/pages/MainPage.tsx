@@ -6,38 +6,6 @@ import Filter from "../components/MainPage/Filter";
 import Memu from "../components/MainPage/Memu";
 import { burger_image } from "../assets/image/asset";
 
-const MainBackground = styled.div`
-  width: 375px;
-  height: auto;
-  background-color: ${theme.colors.bg};
-`;
-
-const MemuWrapper = styled.div`
-  width: 335px;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 20px;
-`;
-
-const BuyButton = styled.button`
-  width: 335px;
-  height: 50px;
-  background-color: #dddddd;
-  ${theme.fonts.title2};
-  color: ${theme.colors.white};
-  border-radius: 10px;
-  border: none;
-  position: fixed;
-  bottom: 26.06px;
-  z-index: 1000;
-  margin: 0 20px;
-  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.25);
-`;
-
 export interface ItemProps {
   menuId: number;
   menuName: string;
@@ -112,3 +80,35 @@ export default function MainPage() {
     </>
   );
 }
+
+const MainBackground = styled.div`
+  width: 375px;
+  height: auto;
+  background-color: ${theme.colors.bg};
+`;
+
+const MemuWrapper = styled.div`
+  width: 335px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+`;
+
+const BuyButton = styled.button`
+  width: 335px;
+  height: 50px;
+  background-color: #dddddd;
+  ${theme.fonts.title2};
+  color: ${theme.colors.white};
+  border-radius: 10px;
+  border: none;
+  position: fixed;
+  bottom: 26.06px;
+  z-index: 1000;
+  margin: 0 20px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.25);
+`;

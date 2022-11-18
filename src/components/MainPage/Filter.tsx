@@ -2,51 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 
-const FilterButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 16px 10px 16px 20px;
-`;
-
-const RecommendationButton = styled.button<{ isClicked: boolean }>`
-  width: 74px;
-  height: 40px;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
-`;
-
-const BurgerButton = styled.button<{ isClicked: boolean }>`
-  width: 87px;
-  height: 40px;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
-`;
-const SnackButton = styled.button<{ isClicked: boolean }>`
-  width: 99px;
-  height: 40px;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
-`;
-const DrinkButton = styled.button<{ isClicked: boolean }>`
-  width: 46px;
-  height: 40px;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
-`;
-
 export default function Filter() {
   const [currentMenu, setCurrentMenu] = useState({
     recommendation: true,
@@ -84,3 +39,50 @@ export default function Filter() {
     </FilterButtonWrapper>
   );
 }
+
+const FilterButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px 10px 16px 20px;
+`;
+
+const RecommendationButton = styled.button<{ isClicked: boolean }>`
+  width: 74px;
+  height: 40px;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
+  ${theme.fonts.body4};
+  color: ${theme.colors.white};
+  padding: 10px;
+  border-radius: 20px;
+`;
+
+const BurgerButton = styled.button<{ isClicked: boolean }>`
+  width: 87px;
+  height: 40px;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
+  ${theme.fonts.body4};
+  color: ${theme.colors.white};
+  padding: 10px;
+  border-radius: 20px;
+`;
+
+const SnackButton = styled.button<{ isClicked: boolean }>`
+  width: 99px;
+  height: 40px;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
+  ${theme.fonts.body4};
+  color: ${theme.colors.white};
+  padding: 10px;
+  border-radius: 20px;
+`;
+
+const DrinkButton = styled.button<{ isClicked: boolean }>`
+  width: 46px;
+  height: 40px;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
+  ${theme.fonts.body4};
+  color: ${theme.colors.white};
+  padding: 10px;
+  border-radius: 20px;
+`;

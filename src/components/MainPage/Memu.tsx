@@ -8,6 +8,34 @@ import { icon_pig } from "../../assets/image/asset";
 import { icon_tomato } from "../../assets/image/asset";
 import { ItemProps } from "../../pages/MainPage";
 
+interface Props {
+  item: ItemProps;
+  key: number;
+}
+
+export default function Memu(props: Props) {
+  const price = props.item.priceOnly;
+  const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
+  const menuPrice: string = price.toString().replace(priceRegex, ",");
+
+  return (
+    <>
+      <MemuBox>
+        <MemuImage src={props.item.image}></MemuImage>
+        <MemuName>{props.item.menuName}</MemuName>
+        <MemuAllergyList>
+          <MemuAllergy src={icon_chicken} />
+          <MemuAllergy src={icon_cow} />
+          <MemuAllergy src={icon_letture} />
+          <MemuAllergy src={icon_pig} />
+          <MemuAllergy src={icon_tomato} />
+        </MemuAllergyList>
+        <MemuPrice>￦{menuPrice}</MemuPrice>
+      </MemuBox>
+    </>
+  );
+}
+
 const MemuBox = styled.div`
   width: 164px;
   height: 252px;
@@ -45,6 +73,7 @@ const MemuAllergy = styled.img`
   width: 18px;
   height: 18px;
 `;
+
 const MemuPrice = styled.div`
   margin-left: 10px;
   ${theme.fonts.subtitle1};
@@ -52,31 +81,3 @@ const MemuPrice = styled.div`
   width: 55px;
   height: 20px;
 `;
-
-interface Props {
-  item: ItemProps;
-  key: number;
-}
-
-export default function Memu(props: Props) {
-  const price = props.item.priceOnly;
-  const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
-  const menuPrice: string = price.toString().replace(priceRegex, ",");
-
-  return (
-    <>
-      <MemuBox>
-        <MemuImage src={props.item.image}></MemuImage>
-        <MemuName>{props.item.menuName}</MemuName>
-        <MemuAllergyList>
-          <MemuAllergy src={icon_chicken} />
-          <MemuAllergy src={icon_cow} />
-          <MemuAllergy src={icon_letture} />
-          <MemuAllergy src={icon_pig} />
-          <MemuAllergy src={icon_tomato} />
-        </MemuAllergyList>
-        <MemuPrice>￦{menuPrice}</MemuPrice>
-      </MemuBox>
-    </>
-  );
-}
