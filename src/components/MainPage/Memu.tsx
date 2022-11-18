@@ -6,6 +6,7 @@ import { icon_cow } from "../../assets/image/asset";
 import { icon_letture } from "../../assets/image/asset";
 import { icon_pig } from "../../assets/image/asset";
 import { icon_tomato } from "../../assets/image/asset";
+import { ItemProps } from "../../pages/MainPage";
 
 const MemuBox = styled.div`
   width: 164px;
@@ -51,27 +52,22 @@ const MemuPrice = styled.div`
   width: 55px;
   height: 20px;
 `;
-interface DataProps {
-  menuId: number;
-  image: string;
-  menuName: string;
-  priceOnly: number;
-}
 
 interface Props {
-  item: DataProps;
+  item: ItemProps;
   key: number;
 }
-export default function Memu(Item: Props) {
-  const price = Item.item.priceOnly;
+
+export default function Memu(props: Props) {
+  const price = props.item.priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
   return (
     <>
       <MemuBox>
-        <MemuImage src={Item.item.image}></MemuImage>
-        <MemuName>{Item.item.menuName}</MemuName>
+        <MemuImage src={props.item.image}></MemuImage>
+        <MemuName>{props.item.menuName}</MemuName>
         <MemuAllergyList>
           <MemuAllergy src={icon_chicken} />
           <MemuAllergy src={icon_cow} />

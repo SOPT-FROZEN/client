@@ -38,7 +38,7 @@ const BuyButton = styled.button`
   box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.25);
 `;
 
-interface ItemProps {
+export interface ItemProps {
   menuId: number;
   menuName: string;
   image: string;
@@ -47,7 +47,7 @@ interface ItemProps {
 
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
-  const data: ItemProps[] = [
+  const data = [
     {
       menuId: 1,
       menuName: "트리플 치즈 버거",
@@ -97,13 +97,14 @@ export default function MainPage() {
       priceOnly: 5700,
     },
   ];
+  const [menus, setMenus] = useState<ItemProps[]>(data);
   return (
     <>
       <MainBackground>
         <Filter />
         <MemuWrapper>
-          {data.map((item, index) => {
-            return <Memu item={item} key={index} />;
+          {menus.map((item: ItemProps) => {
+            return <Memu item={item} key={item.menuId} />;
           })}
         </MemuWrapper>
         <BuyButton>구매하기 ({quantity})</BuyButton>
