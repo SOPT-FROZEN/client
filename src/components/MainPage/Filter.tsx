@@ -44,7 +44,8 @@ const FilterButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 16px 10px 16px 20px;
+  margin: 0 10px 16px 20px;
+  padding-top: 16px;
 `;
 
 const RecommendationButton = styled.button<{ isClicked: boolean }>`
