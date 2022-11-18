@@ -27,7 +27,7 @@ const MemuImage = styled.img`
 
 const MemuName = styled.div`
   margin-left: 10px;
-  ${theme.fonts.subtitle2};
+  ${theme.fonts.caption1};
   color: ${theme.colors.gray800};
   margin-bottom: 5px;
   width: 120px;

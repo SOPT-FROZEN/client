@@ -13,7 +13,7 @@ const RecommendationButton = styled.button<{ isClicked: boolean }>`
   width: 74px;
   height: 40px;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body3};
+  ${theme.fonts.body4};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
@@ -23,7 +23,7 @@ const BurgerButton = styled.button<{ isClicked: boolean }>`
   width: 87px;
   height: 40px;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body3};
+  ${theme.fonts.body4};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
@@ -32,7 +32,7 @@ const SnackButton = styled.button<{ isClicked: boolean }>`
   width: 99px;
   height: 40px;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body3};
+  ${theme.fonts.body4};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
@@ -41,7 +41,7 @@ const DrinkButton = styled.button<{ isClicked: boolean }>`
   width: 46px;
   height: 40px;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body3};
+  ${theme.fonts.body4};
   color: ${theme.colors.white};
   padding: 10px;
   border-radius: 20px;
