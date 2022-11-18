@@ -43,7 +43,7 @@ const PayTitle = styled.h1`
   padding: 17.2px 0 35px 20px;
 `;
 
-const PaymentButtonWrapper = styled.div`
+const PaymentButtonWrapper = styled.section`
   width: 375px;
   height: 205px;
   background-color: ${theme.colors.white};
@@ -52,7 +52,7 @@ const PaymentButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const TotalPriceWrapper = styled.div`
+const TotalPriceWrapper = styled.article`
   width: 335px;
   height: 20px;
   margin: 28px 0;
@@ -73,7 +73,7 @@ const TotalPrice = styled.span`
   font-weight: bold;
 `;
 
-const DetailPriceWrapper = styled.div`
+const DetailPriceWrapper = styled.article`
   width: 335px;
   height: 20px;
   margin: 2px 0;
@@ -94,7 +94,7 @@ const DetailPrice = styled.span`
   font-weight: bold;
 `;
 
-const PaymentButton = styled.div`
+const PaymentButton = styled.button`
   background-color: ${theme.colors.red};
   ${theme.fonts.title2}
   border-radius: 10px;

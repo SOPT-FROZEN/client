@@ -37,13 +37,13 @@ export default function PaymentMethodContainer() {
   );
 }
 
-const PaymentMethodWrapper = styled.div`
+const PaymentMethodWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const PaymentMethodFrame = styled.div`
+const PaymentMethodFrame = styled.article`
   background-color: ${theme.colors.white};
   border-radius: 5px;
   width: 335px;
@@ -51,7 +51,7 @@ const PaymentMethodFrame = styled.div`
   margin: 0 20px;
 `;
 
-const PaymentMethodTitle = styled.div`
+const PaymentMethodTitle = styled.h1`
   font-size: 16px;
   margin: 21px 0 16px 20px;
   font-weight: bold;
@@ -79,7 +79,7 @@ const ChoosedPaymentMethod = styled.button`
   border: none;
 `;
 
-const ChoosePaymentMethod = styled.div`
+const ChoosePaymentMethod = styled.h2`
   border-radius: 50%;
   width: 18px;
   height: 18px;
