@@ -15,7 +15,35 @@ import {
 } from "../assets/image/asset";
 
 export default function DetailPage() {
-  const AllegyImages = [AllergyPig, AllergyCow, AllergyChicken, AllergyLettuce, AllergyTomato];
+  const Allergy = [
+    {
+      name: "pig",
+      src: AllergyPig,
+      altName: "돼지고기 알러지 이미지",
+    },
+    {
+      name: "cow",
+      src: AllergyCow,
+      altName: "소고기 알러지 이미지",
+    },
+    {
+      name: "chicken",
+      src: AllergyChicken,
+      altName: "닭고기 알러지 이미지",
+    },
+    {
+      name: "lettuce",
+      src: AllergyLettuce,
+      altName: "양배추 알러지 이미지",
+    },
+    {
+      name: "tomato",
+      src: AllergyTomato,
+      altName: "토마토 알러지 이미지",
+    },
+  ];
+
+  const data = ["pig", "cow", "chicken", "lettuce"];
 
   return (
     <DetailBackground>
@@ -24,13 +52,16 @@ export default function DetailPage() {
         버거 & 세트
       </DetailTitle>
       <DetailDividingLine></DetailDividingLine>
-      <DetailMenuImg src={BurgerImage}></DetailMenuImg>
+      <DetailMenuImg src={BurgerImage} alt="트리플 치즈 버거 이미지"></DetailMenuImg>
       <DetailInfoBoard>
         <DetailMenuName>트리플 치즈 버거</DetailMenuName>
         <DetailAllergyInfo>
-          {AllegyImages.map((icon) => (
-            <DetailAllergyIcon key={icon} src={icon}></DetailAllergyIcon>
-          ))}
+          {Allergy.map(
+            (icon) =>
+              data.includes(icon.name) && (
+                <DetailAllergyIcon key={icon.name} src={icon.src} alt={icon.altName}></DetailAllergyIcon>
+              ),
+          )}
         </DetailAllergyInfo>
       </DetailInfoBoard>
 
@@ -116,13 +147,13 @@ export default function DetailPage() {
   );
 }
 
-const DetailBackground = styled.div`
+const DetailBackground = styled.section`
   width: 375px;
   height: auto;
   background-color: ${theme.colors.gray100};
 `;
 
-const DetailTitle = styled.div`
+const DetailTitle = styled.header`
   height: 24px;
 
   padding: 10px 0px;
@@ -157,7 +188,7 @@ const DetailMenuImg = styled.img`
   border-radius: 5px;
 `;
 
-const DetailInfoBoard = styled.div`
+const DetailInfoBoard = styled.article`
   width: 335px;
   height: 68px;
 
@@ -204,7 +235,7 @@ const AddSetTitle = styled.h1`
   margin: 20px 0px 14px 26px;
 `;
 
-const AddSetBoard = styled.div`
+const AddSetBoard = styled.article`
   width: 335px;
   height: 60px;
 
@@ -250,7 +281,7 @@ const AddSetBoardPrice = styled.div`
   align-items: center;
 `;
 
-const SelectedSetDetail = styled.div`
+const SelectedSetDetail = styled.article`
   width: 335px;
   height: 147px;
 
@@ -365,7 +396,7 @@ const ChangeOptionBtn = styled.button`
   background-color: ${theme.colors.white};
 `;
 
-const AddToCartModal = styled.div`
+const AddToCartModal = styled.article`
   width: 335px;
   min-height: 137px;
 
