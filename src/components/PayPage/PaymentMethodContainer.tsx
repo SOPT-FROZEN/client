@@ -2,6 +2,41 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 
+export default function PaymentMethodContainer() {
+  return (
+    <PaymentMethodWrapper>
+      <PaymentMethodFrame>
+        <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
+        <PaymentMethod>
+          <ChoosedPaymentMethod />
+          <PaymentText>신용카드/간편결제/기타*</PaymentText>
+        </PaymentMethod>
+        <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
+        <PaymentMethod>
+          <ChoosePaymentMethod />
+          <PaymentText>현금</PaymentText>
+        </PaymentMethod>
+        <PaymentMethod>
+          <ChoosePaymentMethod />
+          <PaymentText>5만원권</PaymentText>
+        </PaymentMethod>
+        <PaymentMethod>
+          <ChoosePaymentMethod />
+          <PaymentText>수표</PaymentText>
+        </PaymentMethod>
+        <PaymentMethod>
+          <ChoosePaymentMethod />
+          <PaymentText>카드(현장 단말기 결제)</PaymentText>
+        </PaymentMethod>
+      </PaymentMethodFrame>
+      <CashReceiptButton>
+        <ChoosePaymentMethod />
+        <CashReceipText>현금영수증</CashReceipText>
+      </CashReceiptButton>
+    </PaymentMethodWrapper>
+  );
+}
+
 const PaymentMethodWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,38 +108,3 @@ const CashReceipText = styled.span`
   color: #545454;
   ${theme.fonts.caption1};
 `;
-
-export default function PaymentMethodContainer() {
-  return (
-    <PaymentMethodWrapper>
-      <PaymentMethodFrame>
-        <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosedPaymentMethod />
-          <PaymentText>신용카드/간편결제/기타*</PaymentText>
-        </PaymentMethod>
-        <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>현금</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>5만원권</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>수표</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>카드(현장 단말기 결제)</PaymentText>
-        </PaymentMethod>
-      </PaymentMethodFrame>
-      <CashReceiptButton>
-        <ChoosePaymentMethod />
-        <CashReceipText>현금영수증</CashReceipText>
-      </CashReceiptButton>
-    </PaymentMethodWrapper>
-  );
-}
