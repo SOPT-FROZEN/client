@@ -13,8 +13,8 @@ interface Props {
   key: number;
 }
 
-export default function Memu(props: Props) {
-  const price = props.item.priceOnly;
+export default function Memu({ item }: Props) {
+  const price = item.priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
   const Allergy = [
@@ -48,12 +48,12 @@ export default function Memu(props: Props) {
   return (
     <>
       <MemuBox>
-        <MemuImage src={props.item.image}></MemuImage>
-        <MemuName>{props.item.menuName}</MemuName>
+        <MemuImage src={item.image}></MemuImage>
+        <MemuName>{item.menuName}</MemuName>
         <MemuAllergyList>
           {Allergy.map(
             (icon) =>
-              props.item.allergy.includes(icon.name) && (
+              item.allergy.includes(icon.name) && (
                 <MemuAllergy key={icon.name} src={icon.src} alt={icon.altName}></MemuAllergy>
               ),
           )}
