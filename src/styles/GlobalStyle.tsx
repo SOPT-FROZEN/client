@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         font-family: 'Apple SD Gothic Neo';
         background-color: ${theme.colors.gray700};
+        /* 1rem = 10px */
         font-size: 62.5%;
     }
     a {
