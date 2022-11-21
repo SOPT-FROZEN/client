@@ -1,8 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
-import { AddSet, RemoveSet } from "../../assets/image/asset";
+import { CartMinusIcon, CartPlusIcon } from "../../assets/image/asset";
 import theme from "../../styles/theme";
-
 interface iCountProps {
   count: number;
   setCount: Dispatch<SetStateAction<number>>;
@@ -21,68 +20,58 @@ export default function Counter({ count, setCount }: iCountProps) {
 
   return (
     <CounterWrap>
-      <PlusBtn onClick={onClickPlusBtn} type="button">
-        <PlusBtnImg src={RemoveSet} alt="빼기버튼 이미지" />
-      </PlusBtn>
-
-      <CountNumber>{count}</CountNumber>
-
-      <MinusBtn onClick={onClickMinusBtn} type="button">
-        <AddSetImg src={AddSet} alt="더하기버튼 이미지" />
+      <MinusBtn className="minus" onClick={onClickMinusBtn}>
+        <MinusImg src={CartMinusIcon} alt="빼기버튼 이미지" />
       </MinusBtn>
+      <AmountBtn className="amount">{count}</AmountBtn>
+      <PlusBtn className="plus" onClick={onClickPlusBtn}>
+        <PlusImg src={CartPlusIcon} alt="더하기버튼 이미지" />
+      </PlusBtn>
     </CounterWrap>
   );
 }
+
 const CounterWrap = styled.div`
-  margin: 9px 8px 13px auto;
-  display: flex;
-`;
-
-const PlusBtn = styled.button`
-  width: 40px;
-  height: 40px;
-
-  padding: 0;
-  border-width: 0;
-
-  border-radius: 5px 0px 0px 5px;
-  border: 1px solid ${theme.colors.gray600};
-
-  background-color: ${theme.colors.white};
-
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
-const PlusBtnImg = styled.img``;
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const CountNumber = styled.div`
   width: 38px;
   height: 38px;
-
-  border-top: 1px solid ${theme.colors.gray600};
-  border-bottom: 1px solid ${theme.colors.gray600};
-
-  font-size: ${theme.fonts.subtitle1};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const MinusBtn = styled.button`
-  width: 40px;
-  height: 40px;
-
-  border-radius: 0px 5px 5px 0px;
   border: 1px solid ${theme.colors.gray600};
-
-  background-color: ${theme.colors.white};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
-const AddSetImg = styled.img``;
+const MinusBtn = styled(Button)`
+  border-radius: 5px 0px 0px 5px;
+  cursor: pointer;
+`;
+
+const MinusImg = styled.img`
+  width: 16px;
+  height: 2px;
+`;
+
+const AmountBtn = styled(Button)`
+  width: 40px;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px;
+
+  color: ${theme.colors.black};
+  ${theme.fonts.subtitle1};
+
+  cursor: auto;
+`;
+
+const PlusBtn = styled(Button)`
+  border-radius: 0px 5px 5px 0px;
+`;
+
+const PlusImg = styled(MinusImg)`
+  height: 16px;
+`;

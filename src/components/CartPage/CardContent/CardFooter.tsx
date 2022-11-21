@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styled from "styled-components";
-import { CartMinusIcon, CartPlusIcon } from "../../../assets/image/asset";
+import { iOrder } from "../../../pages/CartPage";
 import theme from "../../../styles/theme";
+import Counter from "../../common/Counter";
 
 const CardContentFooter = styled.footer`
   display: flex;
@@ -28,64 +29,33 @@ const CardContentFooter = styled.footer`
 
     cursor: pointer;
   }
-
-  > div {
-    display: flex;
-    align-items: center;
-  }
-
-  > div button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid ${theme.colors.gray600};
-    cursor: pointer;
-
-    > img {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  > div .minus {
-    border-radius: 5px 0px 0px 5px;
-    > img {
-      height: 2px;
-    }
-  }
-
-  > div .amount {
-    width: 40px;
-    border-left: 0px;
-    border-right: 0px;
-
-    color: ${theme.colors.black};
-    ${theme.fonts.subtitle1};
-
-    cursor: auto;
-  }
-
-  > div .plus {
-    border-radius: 0px 5px 5px 0px;
-  }
 `;
-export default function CardFooter(detail: { amount: number }) {
+
+interface iFooterProps {
+  order: iOrder;
+  setOrders: Dispatch<SetStateAction<iOrder[]>>;
+  menuId: number;
+  setId: number;
+}
+
+export default function CardFooter({ order, setOrders, menuId, setId }: iFooterProps) {
+  const [count, setCount] = useState(order.details[setId].amount);
+
+  useEffect(() => {
+    // count 변경되면 orders 변경
+    // order &&
+    //   setOrders((prev) => {
+    //     const copyPrev = [...prev];
+    //     copyPrev[menuId].details[setId].amount = count;
+    //     return copyPrev;
+    //   });
+    console.log(count);
+  }, [count]);
+
   return (
     <CardContentFooter>
       <button>옵션 변경</button>
-      <div>
-        <button className="minus">
-          <img src={CartMinusIcon} alt="빼기버튼 이미지" />
-        </button>
-        <button className="amount">{detail.amount}</button>
-        <button className="plus">
-          <img src={CartPlusIcon} alt="더하기버튼 이미지" />
-        </button>
-      </div>
+      <Counter count={order.details[setId].amount} setCount={setCount} />
     </CardContentFooter>
   );
 }
