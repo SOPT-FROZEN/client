@@ -73,7 +73,12 @@ const CardContentFooter = styled.footer`
     border-radius: 0px 5px 5px 0px;
   }
 `;
-export default function CardFooter(detail: { amount: number }) {
+
+interface iFooterProps {
+  amount: number;
+}
+
+export default function CardFooter({ amount }: iFooterProps) {
   return (
     <CardContentFooter>
       <button>옵션 변경</button>
@@ -81,7 +86,7 @@ export default function CardFooter(detail: { amount: number }) {
         <button className="minus">
           <img src={CartMinusIcon} alt="빼기버튼 이미지" />
         </button>
-        <button className="amount">{detail.amount}</button>
+        <button className="amount">{amount}</button>
         <button className="plus">
           <img src={CartPlusIcon} alt="더하기버튼 이미지" />
         </button>

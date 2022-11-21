@@ -44,14 +44,20 @@ const CardContentMenu = styled.article`
     }
   }
 `;
-export default function CardMenu(detail: { set: string; price: number }) {
+
+interface iMenuProps {
+  set: string;
+  price: number;
+}
+
+export default function CardMenu({ set, price }: iMenuProps) {
   return (
     <CardContentMenu>
       <img src={CartMenuImage} alt="메뉴이미지" />
       <div>
         <h3>
-          {detail.set}
-          <span>₩ {detail.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+          {set}
+          <span>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
         </h3>
         <ul>
           <li>사이드 - 후렌치 후라이</li>

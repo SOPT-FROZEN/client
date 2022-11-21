@@ -15,18 +15,22 @@ const CardContentHeader = styled.header`
   }
 `;
 
-export default function CardHeader(detail: { setOrders: any; menuId: number; setId: number }) {
+interface iHeaderProps {
+  setOrders: any;
+  menuId: number;
+  setId: number;
+}
+
+export default function CardHeader({ setOrders, menuId, setId }: iHeaderProps) {
   const onClickCloseBtn = () => {
-    detail.setOrders((prev: iOrder[]) => {
+    setOrders((prev: iOrder[]) => {
       let copyPrev = [...prev];
 
-      copyPrev[detail.menuId - 1].details = prev[detail.menuId - 1].details?.filter(
-        (item) => item.setId !== detail.setId,
-      );
+      copyPrev[menuId - 1].details = prev[menuId - 1].details?.filter((item) => item.setId !== setId);
 
-      if (!copyPrev[detail.menuId - 1].details?.length) {
+      if (!copyPrev[menuId - 1].details?.length) {
         // 만약 들어있는 세트가 없으면 아예 삭제
-        copyPrev = [...prev].filter((item) => item.menuId !== detail.menuId);
+        copyPrev = [...prev].filter((item) => item.menuId !== menuId);
       }
 
       return copyPrev;
