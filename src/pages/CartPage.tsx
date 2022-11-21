@@ -139,7 +139,7 @@ export default function CartPage() {
             <button>항목 추가</button>
           </AddBtnContainer>
           <AddressAndTime />
-          <OkBtn>주문확인</OkBtn>
+          <OkBtn>주문 확인</OkBtn>
         </div>
       ) : (
         <div>
