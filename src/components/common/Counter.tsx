@@ -9,26 +9,36 @@ interface iCountProps {
 }
 
 export default function Counter({ count, setCount }: iCountProps) {
+  const onClickPlusBtn = () => {
+    setCount((prev) => (prev += 1));
+  };
+
+  const onClickMinusBtn = () => {
+    if (count > 0) {
+      setCount((prev) => (prev -= 1));
+    }
+  };
+
   return (
-    <CountSelectedSetWrap>
-      <RemoveSelectedSetBtn type="button">
-        <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-      </RemoveSelectedSetBtn>
+    <CounterWrap>
+      <PlusBtn onClick={onClickPlusBtn} type="button">
+        <PlusBtnImg src={RemoveSet} alt="빼기버튼 이미지" />
+      </PlusBtn>
 
-      <CountedSetNum>{count}</CountedSetNum>
+      <CountNumber>{count}</CountNumber>
 
-      <AddSelectedSetBtn type="button">
-        <AddSetImg src={AddSet}></AddSetImg>
-      </AddSelectedSetBtn>
-    </CountSelectedSetWrap>
+      <MinusBtn onClick={onClickMinusBtn} type="button">
+        <AddSetImg src={AddSet} alt="더하기버튼 이미지" />
+      </MinusBtn>
+    </CounterWrap>
   );
 }
-const CountSelectedSetWrap = styled.div`
+const CounterWrap = styled.div`
   margin: 9px 8px 13px auto;
   display: flex;
 `;
 
-const RemoveSelectedSetBtn = styled.button`
+const PlusBtn = styled.button`
   width: 40px;
   height: 40px;
 
@@ -45,9 +55,9 @@ const RemoveSelectedSetBtn = styled.button`
   justify-content: center;
 `;
 
-const RemoveSetImg = styled.img``;
+const PlusBtnImg = styled.img``;
 
-const CountedSetNum = styled.div`
+const CountNumber = styled.div`
   width: 38px;
   height: 38px;
 
@@ -61,7 +71,7 @@ const CountedSetNum = styled.div`
   justify-content: center;
 `;
 
-const AddSelectedSetBtn = styled.button`
+const MinusBtn = styled.button`
   width: 40px;
   height: 40px;
 
