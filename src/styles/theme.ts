@@ -28,24 +28,24 @@ function FONT({ weight, size, lineHeight, letterSpacing }: Font): string {
   return `
       font-family: 'Apple SD Gothic Neo';
       font-weight: ${weight};
-      font-size: ${size}px;
+      font-size: ${size}rem;
       line-height: ${lineHeight}px;
       letter-spacing: -0.0${letterSpacing}px;
     `;
 }
 
 const fonts = {
-  title1: FONT({ weight: 700, size: 20, lineHeight: 20, letterSpacing: 5 }),
-  title2: FONT({ weight: 700, size: 18, lineHeight: 20, letterSpacing: 5 }),
-  title3: FONT({ weight: 700, size: 17, lineHeight: 20, letterSpacing: 5 }),
-  subtitle1: FONT({ weight: 700, size: 16, lineHeight: 20, letterSpacing: 5 }),
-  subtitle2: FONT({ weight: 600, size: 16, lineHeight: 20, letterSpacing: 5 }),
-  body1: FONT({ weight: 500, size: 16, lineHeight: 20, letterSpacing: 5 }),
-  body2: FONT({ weight: 400, size: 16, lineHeight: 20, letterSpacing: 5 }),
-  body3: FONT({ weight: 600, size: 15, lineHeight: 20, letterSpacing: 5 }),
-  body4: FONT({ weight: 600, size: 13, lineHeight: 20, letterSpacing: 5 }),
-  caption1: FONT({ weight: 600, size: 14, lineHeight: 20, letterSpacing: 5 }),
-  caption2: FONT({ weight: 500, size: 14, lineHeight: 20, letterSpacing: 5 }),
+  title1: FONT({ weight: 700, size: 2.0, lineHeight: 20, letterSpacing: 5 }),
+  title2: FONT({ weight: 700, size: 1.8, lineHeight: 20, letterSpacing: 5 }),
+  title3: FONT({ weight: 700, size: 1.7, lineHeight: 20, letterSpacing: 5 }),
+  subtitle1: FONT({ weight: 700, size: 1.6, lineHeight: 20, letterSpacing: 5 }),
+  subtitle2: FONT({ weight: 600, size: 1.6, lineHeight: 20, letterSpacing: 5 }),
+  body1: FONT({ weight: 500, size: 1.6, lineHeight: 20, letterSpacing: 5 }),
+  body2: FONT({ weight: 400, size: 1.6, lineHeight: 20, letterSpacing: 5 }),
+  body3: FONT({ weight: 600, size: 1.5, lineHeight: 20, letterSpacing: 5 }),
+  body4: FONT({ weight: 600, size: 1.3, lineHeight: 20, letterSpacing: 5 }),
+  caption1: FONT({ weight: 600, size: 1.4, lineHeight: 20, letterSpacing: 5 }),
+  caption2: FONT({ weight: 500, size: 1.4, lineHeight: 20, letterSpacing: 5 }),
 } as const;
 
 const theme = {
