@@ -2,14 +2,18 @@
 import axios from "axios";
 
 // 예시
-interface iLogin {
-  id: string;
-  password: string;
+interface iCart {
+  status: number;
+  message: string;
+  data: [];
 }
 
-export const loginAPI = async (data: iLogin) => {
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
+export const getCartAPI = async () => {
   try {
-    const res = await axios.post("/login", data);
+    const res = await axios.get("/cart");
+    console.log(getCartAPI);
     return res.data;
   } catch (error) {
     console.log(error);

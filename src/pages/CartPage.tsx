@@ -89,6 +89,7 @@ export interface iOrder {
 }
 
 export default function CartPage() {
+  console.log(() => getCartAPI());
   const [orders, setOrders] = useState<iOrder[]>([
     {
       menuId: 1,
