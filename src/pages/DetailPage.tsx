@@ -2,48 +2,11 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import {
-  BurgerImage,
-  BackIcon,
-  AllergyPig,
-  AllergyCow,
-  AllergyChicken,
-  AllergyLettuce,
-  AllergyTomato,
-  RemoveSet,
-  AddSet,
-} from "../assets/image/asset";
+import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset";
+import Allergy from "../components/common/Allergy";
 
 export default function DetailPage() {
-  const Allergy = [
-    {
-      name: "pig",
-      src: AllergyPig,
-      altName: "돼지고기 알러지 이미지",
-    },
-    {
-      name: "cow",
-      src: AllergyCow,
-      altName: "소고기 알러지 이미지",
-    },
-    {
-      name: "chicken",
-      src: AllergyChicken,
-      altName: "닭고기 알러지 이미지",
-    },
-    {
-      name: "lettuce",
-      src: AllergyLettuce,
-      altName: "양배추 알러지 이미지",
-    },
-    {
-      name: "tomato",
-      src: AllergyTomato,
-      altName: "토마토 알러지 이미지",
-    },
-  ];
-
-  const data = ["pig", "cow", "chicken", "lettuce"];
+  const data: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce"> = ["pig", "cow", "chicken", "lettuce"];
 
   return (
     <DetailBackground>
@@ -56,12 +19,7 @@ export default function DetailPage() {
       <DetailInfoBoard>
         <DetailMenuName>트리플 치즈 버거</DetailMenuName>
         <DetailAllergyInfo>
-          {Allergy.map(
-            (icon) =>
-              data.includes(icon.name) && (
-                <DetailAllergyIcon key={icon.name} src={icon.src} alt={icon.altName}></DetailAllergyIcon>
-              ),
-          )}
+          <Allergy allergyData={data} />
         </DetailAllergyInfo>
       </DetailInfoBoard>
 
@@ -224,10 +182,6 @@ const DetailAllergyInfo = styled.div`
   justify-content: center;
 `;
 
-const DetailAllergyIcon = styled.img`
-  width: 2rem;
-  height: 2rem;
-`;
 
 const AddSetTitle = styled.h1`
   font-size: ${theme.fonts.title2};
