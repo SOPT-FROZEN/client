@@ -182,7 +182,6 @@ const DetailAllergyInfo = styled.div`
   justify-content: center;
 `;
 
-
 const AddSetTitle = styled.h1`
   font-size: ${theme.fonts.title2};
 

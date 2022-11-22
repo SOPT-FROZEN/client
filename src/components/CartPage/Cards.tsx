@@ -6,10 +6,15 @@ import CardFooter from "./CardContent/CardFooter";
 import CardHeader from "./CardContent/CardHeader";
 import CardMenu from "./CardContent/CardMenu";
 
-export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<SetStateAction<iOrder[]>> }) {
+interface iCardsProps {
+  orders: iOrder[];
+  setOrders: Dispatch<SetStateAction<iOrder[]>>;
+}
+
+export default function Cards({ orders, setOrders }: iCardsProps) {
   return (
     <div>
-      {props.orders.map((order: iOrder, menuIdx: number) => (
+      {orders.map((order: iOrder, menuIdx: number) => (
         <Card key={menuIdx}>
           <MenuHeader>
             <MenuTitle>{order.title}</MenuTitle>
@@ -17,9 +22,9 @@ export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<Set
           </MenuHeader>
           {order.details?.map((detail: iSet, setIdx: number) => (
             <CardContent key={setIdx}>
-              <CardHeader setOrders={props.setOrders} menuId={menuIdx} setId={setIdx} />
+              <CardHeader setOrders={setOrders} menuId={menuIdx} setId={setIdx} />
               <CardMenu set={detail.set} price={detail.price} />
-              <CardFooter order={order} setOrders={props.setOrders} menuId={order.menuId} setId={index} />
+              <CardFooter order={order} setOrders={setOrders} menuId={order.menuId} setId={setIdx} />
             </CardContent>
           ))}
         </Card>
