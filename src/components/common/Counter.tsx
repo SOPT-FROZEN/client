@@ -41,26 +41,26 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
 
-  width: 38px;
-  height: 38px;
-  border: 1px solid ${theme.colors.gray600};
+  width: 3.8rem;
+  height: 3.8rem;
+  border: 0.1rem solid ${theme.colors.gray600};
 `;
 
 const MinusBtn = styled(Button)`
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
   cursor: pointer;
 `;
 
 const MinusImg = styled.img`
-  width: 16px;
-  height: 2px;
+  width: 1.6rem;
+  height: 0.2rem;
 `;
 
 const AmountBtn = styled(Button)`
-  width: 40px;
-  border-left: 0px;
-  border-right: 0px;
-  border-radius: 0px;
+  width: 4rem;
+  border-left: 0rem;
+  border-right: 0rem;
+  border-radius: 0rem;
 
   color: ${theme.colors.black};
   ${theme.fonts.subtitle1};
@@ -69,9 +69,9 @@ const AmountBtn = styled(Button)`
 `;
 
 const PlusBtn = styled(Button)`
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
 `;
 
 const PlusImg = styled(MinusImg)`
-  height: 16px;
+  height: 1.6rem;
 `;
