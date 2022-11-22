@@ -1,10 +1,12 @@
 // 장바구니 페이지
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AddressAndTime from "../components/CartPage/AddressAndTime";
 import Cards from "../components/CartPage/Cards";
 import theme from "../styles/theme";
 import { CartEmpty } from "../assets/image/asset";
+import { getCartAPI } from "../util/api";
+import { response } from "msw";
 
 const CartWrapper = styled.section`
   display: flex;
@@ -89,47 +91,12 @@ export interface iOrder {
 }
 
 export default function CartPage() {
-  console.log(() => getCartAPI());
-  const [orders, setOrders] = useState<iOrder[]>([
-    {
-      menuId: 1,
-      title: "트리플 치즈 버거",
-      total: 9900,
-      details: [
-        {
-          setId: 1,
-          set: "라지 세트",
-          price: 9900,
-          amount: 1,
-        },
-        {
-          setId: 2,
-          set: "단품",
-          price: 4500,
-          amount: 2,
-        },
-      ],
-    },
-    {
-      menuId: 2,
-      title: "트리플 치즈 버거",
-      total: 9900,
-      details: [
-        {
-          setId: 1,
-          set: "라지 세트",
-          price: 9900,
-          amount: 1,
-        },
-        {
-          setId: 2,
-          set: "단품",
-          price: 4500,
-          amount: 2,
-        },
-      ],
-    },
-  ]);
+  const [orders, setOrders] = useState<iOrder[]>([]);
+
+  useEffect(() => {
+    getCartAPI().then((result) => setOrders(result.data));
+  }, []);
+
   return (
     <CartWrapper>
       <Title>장바구니</Title>

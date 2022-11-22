@@ -24,14 +24,14 @@ interface iHeaderProps {
 export default function CardHeader({ setOrders, menuId, setId }: iHeaderProps) {
   const onClickCloseBtn = () => {
     setOrders((prev: iOrder[]) => {
-      let copyPrev = [...prev];
+      const copyPrev = [...prev];
 
-      copyPrev[menuId - 1].details = prev[menuId - 1].details?.filter((item) => item.setId !== setId);
-
-      if (!copyPrev[menuId - 1].details?.length) {
-        // 만약 들어있는 세트가 없으면 아예 삭제
-        copyPrev = [...prev].filter((item) => item.menuId !== menuId);
-      }
+      //copyPrev[menuId].details = prev[menuId].details?.filter((item) => item.setId !== setId);
+      copyPrev[menuId].details = copyPrev[menuId].details?.splice(setId, 1);
+      // if (!copyPrev[menuId].details?.length) {
+      //   // 만약 들어있는 세트가 없으면 아예 삭제
+      //   copyPrev = copyPrev.splice(menuId + 1, 1);
+      // }
 
       return copyPrev;
     });
