@@ -22,12 +22,11 @@ export default function CardFooter({ order, setOrders, menuId, setId }: iFooterP
     //     copyPrev[menuId].details[setId].amount = count;
     //     return copyPrev;
     //   });
-    console.log(count);
   }, [count]);
 
   return (
     <CardContentFooter>
-      <button>옵션 변경</button>
+      <OptionButton>옵션 변경</OptionButton>
       <Counter count={order.details[setId].amount} setCount={setCount} />
     </CardContentFooter>
   );

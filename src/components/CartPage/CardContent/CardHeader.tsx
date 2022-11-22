@@ -3,19 +3,23 @@ import styled from "styled-components";
 import { CartCloseIcon } from "../../../assets/image/asset";
 import { iOrder } from "../../../pages/CartPage";
 
-export default function CardHeader(detail: { setOrders: any; menuId: number; setId: number }) {
+interface iHeaderProps {
+  setOrders: any;
+  menuId: number;
+  setId: number;
+}
+
+export default function CardHeader({ setOrders, menuId, setId }: iHeaderProps) {
   const onClickCloseBtn = () => {
-    detail.setOrders((prev: iOrder[]) => {
-      let copyPrev = [...prev];
+    setOrders((prev: iOrder[]) => {
+      const copyPrev = [...prev];
 
-      copyPrev[detail.menuId - 1].details = prev[detail.menuId - 1].details?.filter(
-        (item) => item.setId !== detail.setId,
-      );
-
-      if (!copyPrev[detail.menuId - 1].details?.length) {
-        // 만약 들어있는 세트가 없으면 아예 삭제
-        copyPrev = [...prev].filter((item) => item.menuId !== detail.menuId);
-      }
+      //copyPrev[menuId].details = prev[menuId].details?.filter((item) => item.setId !== setId);
+      copyPrev[menuId].details = copyPrev[menuId].details?.splice(setId, 1);
+      // if (!copyPrev[menuId].details?.length) {
+      //   // 만약 들어있는 세트가 없으면 아예 삭제
+      //   copyPrev = copyPrev.splice(menuId + 1, 1);
+      // }
 
       return copyPrev;
     });
