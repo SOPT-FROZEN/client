@@ -44,11 +44,11 @@ const Button = styled.button`
   width: 3.8rem;
   height: 3.8rem;
   border: 0.1rem solid ${theme.colors.gray600};
+  cursor: pointer;
 `;
 
 const MinusBtn = styled(Button)`
   border-radius: 0.5rem 0rem 0rem 0.5rem;
-  cursor: pointer;
 `;
 
 const MinusImg = styled.img`
