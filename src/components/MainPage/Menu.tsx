@@ -1,31 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { icon_chicken, icon_cow, icon_letture, icon_pig, icon_tomato } from "../../assets/image/asset";
+import Allergy from "../common/Allergy";
 
-import { ItemProps } from "../../pages/MainPage";
+import { iItem } from "../../pages/MainPage";
 
-interface Props {
-  item: ItemProps;
+interface iItemProps {
+  menuName: string;
+  image: string;
+  priceOnly: number;
+  allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
   key: number;
 }
 
-export default function Menu(props: Props) {
-  const price = props.item.priceOnly;
+export default function Menu({ menuName, image, allergy, priceOnly }: iItemProps) {
+  const price = priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
   return (
     <>
       <MenuBox>
-        <MenuImage src={props.item.image}></MenuImage>
-        <MenuName>{props.item.menuName}</MenuName>
+        <MenuImage src={image}></MenuImage>
+        <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
-          <MenuAllergy src={icon_chicken} />
-          <MenuAllergy src={icon_cow} />
-          <MenuAllergy src={icon_letture} />
-          <MenuAllergy src={icon_pig} />
-          <MenuAllergy src={icon_tomato} />
+          <Allergy allergyData={allergy} />
         </MenuAllergyList>
         <MenuPrice>￦{menuPrice}</MenuPrice>
       </MenuBox>
