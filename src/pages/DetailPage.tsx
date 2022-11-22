@@ -106,17 +106,17 @@ export default function DetailPage() {
 }
 
 const DetailBackground = styled.section`
-  width: 375px;
+  width: 37.5rem;
   height: auto;
   background-color: ${theme.colors.gray100};
 `;
 
 const DetailTitle = styled.header`
-  height: 24px;
+  height: 2.4rem;
 
-  padding: 10px 0px;
+  padding: 1rem 0rem;
 
-  margin-left: 20px;
+  margin-left: 2rem;
 
   font-size: ${theme.fonts.body3};
 
@@ -125,36 +125,36 @@ const DetailTitle = styled.header`
 `;
 
 const DetailBackIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  margin: 5px 9px 5px 4px;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0.5rem 0.9rem 0.5rem 0.4rem;
 `;
 
 const DetailDividingLine = styled.hr`
-  width: 335px;
+  width: 33.5rem;
   color: #d1d1d1;
 
-  margin: 0px 20px;
+  margin: 0rem 2rem;
 `;
 
 const DetailMenuImg = styled.img`
-  width: 335px;
-  height: 213px;
+  width: 33.5rem;
+  height: 21.3rem;
 
-  margin: 10px 20px 11px 20px;
+  margin: 1rem 2rem 1.1rem 2rem;
 
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const DetailInfoBoard = styled.article`
-  width: 335px;
-  height: 68px;
+  width: 33.5rem;
+  height: 6.8rem;
 
   background-color: ${theme.colors.white};
 
-  border-radius: 5px;
+  border-radius: 0.5rem;
 
-  margin: 0 20px;
+  margin: 0 2rem;
 
   display: flex;
   flex-direction: column;
@@ -165,37 +165,38 @@ const DetailInfoBoard = styled.article`
 const DetailMenuName = styled.div`
   font-size: ${theme.fonts.title3};
 
-  margin-top: 10px;
+  margin-top: 1rem;
 
   display: flex;
   justify-content: center;
 `;
 
 const DetailAllergyInfo = styled.div`
-  width: 104.31px;
-  height: 20px;
+  width: 10.431rem;
+  height: 2rem;
 
-  margin-top: 7px;
-  margin-bottom: 11px;
+  margin-top: 0.7rem;
+  margin-bottom: 1.1rem;
 
   display: flex;
   justify-content: center;
 `;
 
+
 const AddSetTitle = styled.h1`
   font-size: ${theme.fonts.title2};
 
-  margin: 20px 0px 14px 26px;
+  margin: 2rem 0rem 1.4rem 2.6rem;
 `;
 
 const AddSetBoard = styled.article`
-  width: 335px;
-  height: 60px;
+  width: 33.5rem;
+  height: 6rem;
 
   overflow: hidden;
 
-  border-radius: 5px;
-  margin: 14px 20px 10px 20px;
+  border-radius: 0.5rem;
+  margin: 1.4rem 2rem 1rem 2rem;
 
   background-color: ${theme.colors.white};
 
@@ -208,42 +209,42 @@ const AddSetBoardTitleWrap = styled.div`
 `;
 
 const AddSetBoardTitle = styled.div`
-  width: 82px;
-  height: 30px;
+  width: 8.2rem;
+  height: 3rem;
 
-  margin-left: 10px;
+  margin-left: 1rem;
 
   font-size: ${theme.fonts.body1};
 
-  border-right: 1px solid ${theme.colors.gray200};
+  border-right: 0.1rem solid ${theme.colors.gray200};
 
   display: flex;
   align-items: center;
 `;
 
 const AddSetBoardPrice = styled.div`
-  height: 20px;
+  height: 2rem;
 
   color: ${theme.colors.green};
 
   font-size: ${theme.fonts.subtitle1};
 
-  margin: 20px 0px 20px 11px;
+  margin: 2rem 0rem 2rem 1.1rem;
 
   display: flex;
   align-items: center;
 `;
 
 const SelectedSetDetail = styled.article`
-  width: 335px;
-  height: 147px;
+  width: 33.5rem;
+  height: 14.7rem;
 
-  margin: 20px 20px 28px 20px;
+  margin: 2rem 2rem 2.8rem 2rem;
 
   display: flex;
   flex-direction: column;
 
-  border-radius: 5px;
+  border-radius: 0.5rem;
 
   background-color: ${theme.colors.white};
 `;
@@ -251,16 +252,16 @@ const SelectedSetDetail = styled.article`
 const SelectedSetName = styled.div`
   font-size: ${theme.fonts.subtitle2};
 
-  margin: 12px auto 3.94px 10px;
+  margin: 1.2rem auto 0.394rem 1rem;
 `;
 
 const SelectedOptionWrap = styled.div``;
 
 const SelectedOptionName = styled.div`
-  height: 20px;
+  height: 2rem;
 
-  margin-left: 10px;
-  margin-bottom: 3px;
+  margin-left: 1rem;
+  margin-bottom: 0.3rem;
 
   font-size: ${theme.fonts.caption2};
 
@@ -269,10 +270,10 @@ const SelectedOptionName = styled.div`
 `;
 
 const SelectedSetDividingLine = styled.hr`
-  width: 315px;
+  width: 31.5rem;
   color: #d1d1d1;
 
-  margin: 0px 10px 7.06px 10px;
+  margin: 0rem 1rem 0.706rem 1rem;
 
   /* 왜 아래 같이 하면 마진이 자동으로 들어갈까! */
   /* display: flex;
@@ -280,35 +281,37 @@ const SelectedSetDividingLine = styled.hr`
 `;
 
 const CountSelectedSetWrap = styled.div`
-  margin: 9px 8px 13px auto;
+  margin: 0.9rem 0.8rem 1.3rem auto;
   display: flex;
 `;
 
 const RemoveSelectedSetBtn = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
 
   padding: 0;
   border-width: 0;
 
-  border-radius: 5px 0px 0px 5px;
-  border: 1px solid ${theme.colors.gray600};
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  border: 0.1rem solid ${theme.colors.gray600};
 
   background-color: ${theme.colors.white};
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
 `;
 
 const RemoveSetImg = styled.img``;
 
 const CountedSetNum = styled.div`
-  width: 38px;
-  height: 38px;
+  width: 3.8rem;
+  height: 3.8rem;
 
-  border-top: 1px solid ${theme.colors.gray600};
-  border-bottom: 1px solid ${theme.colors.gray600};
+  border-top: 0.1rem solid ${theme.colors.gray600};
+  border-bottom: 0.1rem solid ${theme.colors.gray600};
 
   font-size: ${theme.fonts.subtitle1};
 
@@ -318,47 +321,51 @@ const CountedSetNum = styled.div`
 `;
 
 const AddSelectedSetBtn = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
 
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid ${theme.colors.gray600};
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+  border: 0.1rem solid ${theme.colors.gray600};
 
   background-color: ${theme.colors.white};
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
 `;
 
 const AddSetImg = styled.img``;
 
 const ChangeOptionBtn = styled.button`
-  width: 311px;
-  height: 39px;
+  width: 31.1rem;
+  height: 3.9rem;
 
-  border: 1px solid #545454;
-  border-radius: 10px;
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
 
-  margin: 10px 12px 12px 12px;
+  margin: 1rem 1.2rem 1.2rem 1.2rem;
 
   font-size: ${theme.fonts.caption1};
 
   text-align: center;
 
   background-color: ${theme.colors.white};
+
+  cursor: pointer;
 `;
 
 const AddToCartModal = styled.article`
-  width: 335px;
-  min-height: 137px;
+  width: 33.5rem;
+  min-height: 13.7rem;
 
-  padding: 20px;
+  padding: 2rem;
 
   position: sticky;
-  bottom: 0px;
+  bottom: 0rem;
 
-  border-top: 1px solid #d1d1d1;
+  border-top: 0.1rem solid #d1d1d1;
 
   background-color: ${theme.colors.white};
 
@@ -368,33 +375,33 @@ const AddToCartModal = styled.article`
 `;
 
 const AddToCartPriceWrap = styled.div`
-  margin: 8px auto;
+  margin: 0.8rem auto;
 
-  width: 335px;
+  width: 33.5rem;
   display: flex;
   justify-content: space-between;
 `;
 
 const AddToCartPriceTitle = styled.h1`
   font-weight: 700;
-  font-size: 22px;
-  line-height: 20px;
+  font-size: 2.2rem;
+  line-height: 2rem;
 
-  letter-spacing: -0.5px;
+  letter-spacing: -0.05rem;
 `;
 
 const AddToCartTotalPrice = styled.h1`
   font-weight: 800;
-  font-size: 22px;
-  line-height: 20px;
+  font-size: 2.2rem;
+  line-height: 2rem;
   color: ${theme.colors.green};
 
-  letter-spacing: -0.5px;
+  letter-spacing: -0.05rem;
 `;
 
 const AddToCartSetInfoWrap = styled.div`
-  margin: 8px auto;
-  width: 335px;
+  margin: 0.8rem auto;
+  width: 33.5rem;
   display: flex;
   justify-content: space-between;
 `;
@@ -410,17 +417,19 @@ const AddToCartSetPrice = styled.h2`
 `;
 
 const AddToCartButton = styled.button`
-  width: 335px;
-  height: 50px;
+  width: 33.5rem;
+  height: 5rem;
 
-  border-radius: 10px;
+  border-radius: 1rem;
 
   color: ${theme.colors.white};
   background-color: ${theme.colors.yellow};
-  box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.25);
+  box-shadow: 0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.25);
 
   font-size: ${theme.fonts.title2};
 
-  margin-top: 18.94px;
-  margin-bottom: 6.06px;
+  margin-top: 1.894rem;
+  margin-bottom: 0.606rem;
+
+  cursor: pointer;
 `;
