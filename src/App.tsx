@@ -4,14 +4,6 @@ import GlobalStyle from "./styles/GlobalStyle";
 import styled from "styled-components";
 import Header from "./components/common/Header";
 
-const MobileContainer = styled.div`
-  position: relative;
-
-  margin: 0 auto;
-
-  width: 375px;
-`;
-
 function App() {
   return (
     <MobileContainer>
@@ -21,5 +13,13 @@ function App() {
     </MobileContainer>
   );
 }
+
+const MobileContainer = styled.div`
+  position: relative;
+
+  margin: 0 auto;
+
+  width: 37.5rem;
+`;
 
 export default App;
