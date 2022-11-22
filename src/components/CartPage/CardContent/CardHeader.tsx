@@ -3,18 +3,6 @@ import styled from "styled-components";
 import { CartCloseIcon } from "../../../assets/image/asset";
 import { iOrder } from "../../../pages/CartPage";
 
-const CardContentHeader = styled.header`
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10.33px;
-  margin-right: 5.37px;
-  > button > img {
-    width: 13.33px;
-    height: 13.37px;
-    cursor: pointer;
-  }
-`;
-
 interface iHeaderProps {
   setOrders: any;
   menuId: number;
@@ -38,9 +26,24 @@ export default function CardHeader({ setOrders, menuId, setId }: iHeaderProps) {
   };
   return (
     <CardContentHeader>
-      <button onClick={onClickCloseBtn}>
+      <CloseBtn onClick={onClickCloseBtn}>
         <img src={CartCloseIcon} alt="닫기버튼 아이콘" />
-      </button>
+      </CloseBtn>
     </CardContentHeader>
   );
 }
+
+const CardContentHeader = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.033rem;
+  margin-right: 0.537rem;
+`;
+
+const CloseBtn = styled.button`
+  > img {
+    width: 1.333rem;
+    height: 1.337rem;
+    cursor: pointer;
+  }
+`;

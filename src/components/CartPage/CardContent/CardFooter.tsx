@@ -3,75 +3,41 @@ import styled from "styled-components";
 import { CartMinusIcon, CartPlusIcon } from "../../../assets/image/asset";
 import theme from "../../../styles/theme";
 
+export default function CardFooter(detail: { amount: number }) {
+  return (
+    <CardContentFooter>
+      <OptionButton>옵션 변경</OptionButton>
+      {/* 공용 컴포넌트 */}
+    </CardContentFooter>
+  );
+}
+
 const CardContentFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 13px 5px;
-  padding-bottom: 0px;
-  > button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 1.3rem 0.5rem;
+  padding-bottom: 0rem;
+`;
 
-    padding: 10px;
+const OptionButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 161px;
-    height: 39px;
+  padding: 1rem;
 
-    border: 1px solid #545454;
-    border-radius: 10px;
+  width: 16.1rem;
+  height: 3.9rem;
 
-    ${theme.fonts.caption1};
-    color: #545454;
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
 
-    cursor: pointer;
-  }
+  ${theme.fonts.caption1};
+  color: #545454;
 
-  > div {
-    display: flex;
-    align-items: center;
-  }
-
-  > div button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid ${theme.colors.gray600};
-    cursor: pointer;
-
-    > img {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  > div .minus {
-    border-radius: 5px 0px 0px 5px;
-    > img {
-      height: 2px;
-    }
-  }
-
-  > div .amount {
-    width: 40px;
-    border-left: 0px;
-    border-right: 0px;
-
-    color: ${theme.colors.black};
-    ${theme.fonts.subtitle1};
-
-    cursor: auto;
-  }
-
-  > div .plus {
-    border-radius: 0px 5px 5px 0px;
-  }
+  cursor: pointer;
 `;
 
 interface iFooterProps {
