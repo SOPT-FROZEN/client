@@ -12,22 +12,14 @@ export default function PaymentMethodContainer() {
           <PaymentText>신용카드/간편결제/기타*</PaymentText>
         </PaymentMethod>
         <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosePaymentMethod isClicked={false} />
-          <PaymentText>현금</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod isClicked={false} />
-          <PaymentText>5만원권</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod isClicked={false} />
-          <PaymentText>수표</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod isClicked={false} />
-          <PaymentText>카드(현장 단말기 결제)</PaymentText>
-        </PaymentMethod>
+        {["현금", "5만원권", "수표", "카드(현장 단말기 결제)"].map((method, index) => {
+          return (
+            <PaymentMethod key={index}>
+              <ChoosePaymentMethod isClicked={false} />
+              <PaymentText>{method}</PaymentText>
+            </PaymentMethod>
+          );
+        })}
       </PaymentMethodFrame>
       <CashReceiptButton>
         <ChoosePaymentMethod isClicked={false} />
