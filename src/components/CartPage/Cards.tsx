@@ -19,7 +19,7 @@ export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<Set
             <CardContent key={index}>
               <CardHeader setOrders={props.setOrders} menuId={order.menuId} setId={detail.setId} />
               <CardMenu set={detail.set} price={detail.price} />
-              <CardFooter amount={detail.amount} />
+              <CardFooter order={order} setOrders={props.setOrders} menuId={order.menuId} setId={index} />
             </CardContent>
           ))}
         </Card>
