@@ -3,78 +3,96 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import Filter from "../components/MainPage/Filter";
-import Memu from "../components/MainPage/Memu";
+import Menu from "../components/MainPage/Menu";
 import { burger_image } from "../assets/image/asset";
 
-export interface ItemProps {
+export interface iItem {
   menuId: number;
   menuName: string;
   image: string;
   priceOnly: number;
+  allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
 }
 
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
-  const data = [
+  const data: iItem[] = [
     {
       menuId: 1,
       menuName: "트리플 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 2,
       menuName: "맥스파이시 버거",
       image: burger_image,
       priceOnly: 7500,
+      allergy: ["pig", "chicken", "lettuce"],
     },
     {
       menuId: 3,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["cow", "chicken", "lettuce"],
     },
     {
       menuId: 4,
       menuName: "1955 버거",
       image: burger_image,
       priceOnly: 8500,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 5,
       menuName: "트리플 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["lettuce"],
     },
     {
       menuId: 6,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "tomato", "chicken", "lettuce"],
     },
     {
       menuId: 7,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["tomato", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 7,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
   ];
-  const [menus, setMenus] = useState<ItemProps[]>(data);
+
+  const [menus, setMenus] = useState<iItem[]>(data);
   return (
     <>
       <MainBackground>
         <Filter />
-        <MemuWrapper>
-          {menus.map((item: ItemProps) => {
-            return <Memu item={item} key={item.menuId} />;
+        <MenuWrapper>
+          {menus.map((item: iItem) => {
+            return (
+              <Menu
+                menuName={item.menuName}
+                image={item.image}
+                priceOnly={item.priceOnly}
+                allergy={item.allergy}
+                key={item.menuId}
+              />
+            );
           })}
-        </MemuWrapper>
+        </MenuWrapper>
         <BuyButton>구매하기 ({quantity})</BuyButton>
       </MainBackground>
     </>
@@ -82,33 +100,33 @@ export default function MainPage() {
 }
 
 const MainBackground = styled.div`
-  width: 375px;
+  width: 37.5rem;
   height: auto;
   background-color: ${theme.colors.bg};
 `;
 
-const MemuWrapper = styled.div`
-  width: 335px;
+const MenuWrapper = styled.div`
+  width: 33.5rem;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 2rem;
 `;
 
 const BuyButton = styled.button`
-  width: 335px;
-  height: 50px;
+  width: 33.5rem;
+  height: 5rem;
   background-color: #dddddd;
   ${theme.fonts.title2};
   color: ${theme.colors.white};
-  border-radius: 10px;
+  border-radius: 1rem;
   border: none;
   position: fixed;
-  bottom: 26.06px;
+  bottom: 2.606rem;
   z-index: 1000;
-  margin: 0 20px;
-  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.25);
+  margin: 0 2rem;
+  box-shadow: 0 0.3rem 1.3rem 0 rgba(0, 0, 0, 0.25);
 `;
