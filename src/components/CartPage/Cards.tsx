@@ -32,12 +32,12 @@ const Card = styled.article`
   display: flex;
   flex-direction: column;
 
-  padding: 0px 10px;
-  padding-top: 12px;
-  margin-top: 10px;
+  padding: 0rem 1rem;
+  padding-top: 1.2rem;
+  margin-top: 1rem;
 
   background-color: ${theme.colors.white};
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const MenuHeader = styled.header`
@@ -45,7 +45,7 @@ const MenuHeader = styled.header`
   flex-direction: row;
   justify-content: space-between;
 
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   width: 100%;
 `;
 
@@ -62,7 +62,7 @@ const CardContent = styled.article`
   display: flex;
   flex-direction: column;
 
-  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
   width: 100%;
-  border-top: 1px solid ${theme.colors.gray200};
+  border-top: 0.1rem solid ${theme.colors.gray200};
 `;

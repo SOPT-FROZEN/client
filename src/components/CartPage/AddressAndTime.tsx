@@ -24,21 +24,21 @@ const AddressTimeWrapper = styled.section``;
 const AddressTimeContainer = styled.article`
   display: flex;
   flex-direction: column;
-  padding: 15px 0px;
-  margin-bottom: 15px;
+  padding: 1.5rem 0rem;
+  margin-bottom: 1.5rem;
 
   background-color: ${theme.colors.white};
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const AddressTimeTitle = styled.h1`
-  margin-left: 10px;
+  margin-left: 1rem;
   ${theme.fonts.title2};
 `;
 
 const AddressTimeSubtitle = styled.h2`
-  margin-left: 15px;
-  margin-top: 3px;
+  margin-left: 1.5rem;
+  margin-top: 0.3rem;
   ${theme.fonts.body2};
   font-weight: 400;
   color: #6d6d6d;
@@ -49,12 +49,12 @@ const ChangeBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
-  margin: 0px 12px;
-  margin-top: 13px;
+  padding: 1rem;
+  margin: 0rem 1.2rem;
+  margin-top: 1.3rem;
 
-  border: 1px solid #545454;
-  border-radius: 10px;
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
 
   cursor: pointer;
 `;

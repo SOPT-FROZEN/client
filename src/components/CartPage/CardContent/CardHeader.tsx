@@ -32,14 +32,14 @@ export default function CardHeader(detail: { setOrders: any; menuId: number; set
 const CardContentHeader = styled.header`
   display: flex;
   justify-content: flex-end;
-  margin-top: 10.33px;
-  margin-right: 5.37px;
+  margin-top: 1.033rem;
+  margin-right: 0.537rem;
 `;
 
 const CloseBtn = styled.button`
   > img {
-    width: 13.33px;
-    height: 13.37px;
+    width: 1.333rem;
+    height: 1.337rem;
     cursor: pointer;
   }
 `;

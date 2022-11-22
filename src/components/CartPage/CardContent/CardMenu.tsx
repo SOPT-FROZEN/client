@@ -26,12 +26,12 @@ const CardContentMenu = styled.article`
 `;
 
 const MenuImg = styled.img`
-  margin-top: 1.3px;
-  width: 104px;
-  height: 95px;
+  margin-top: 0.13rem;
+  width: 10.4rem;
+  height: 9.5rem;
 
-  border: 1px solid ${theme.colors.gray200};
-  border-radius: 5px;
+  border: 0.1rem solid ${theme.colors.gray200};
+  border-radius: 0.5rem;
 `;
 
 const DetailContainer = styled.div`
@@ -39,13 +39,13 @@ const DetailContainer = styled.div`
 `;
 
 const DetailTitle = styled.h3`
-  margin-top: 11px;
-  margin-left: 14px;
+  margin-top: 1.1rem;
+  margin-left: 1.4rem;
 
   ${theme.fonts.caption1};
 
   > span {
-    margin-left: 35px;
+    margin-left: 3.5rem;
     ${theme.fonts.caption1};
     font-weight: 500;
     color: ${theme.colors.green};
@@ -53,13 +53,13 @@ const DetailTitle = styled.h3`
 `;
 
 const DetailOptions = styled.ul`
-  margin-top: 11px;
-  margin-left: 30px;
+  margin-top: 1.1rem;
+  margin-left: 3rem;
   list-style: disc outside;
   ${theme.fonts.caption1};
   font-weight: 500;
   color: #0a0909;
   > li:last-child {
-    margin-top: 3px;
+    margin-top: 0.3rem;
   }
 `;

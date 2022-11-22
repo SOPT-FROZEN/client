@@ -17,8 +17,8 @@ const CardContentFooter = styled.footer`
   justify-content: space-between;
   align-items: center;
 
-  padding: 13px 5px;
-  padding-bottom: 0px;
+  padding: 1.3rem 0.5rem;
+  padding-bottom: 0rem;
 `;
 
 const OptionButton = styled.button`
@@ -26,13 +26,13 @@ const OptionButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
+  padding: 1rem;
 
-  width: 161px;
-  height: 39px;
+  width: 16.1rem;
+  height: 3.9rem;
 
-  border: 1px solid #545454;
-  border-radius: 10px;
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
 
   ${theme.fonts.caption1};
   color: #545454;
