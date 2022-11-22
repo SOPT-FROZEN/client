@@ -8,29 +8,21 @@ export default function PaymentMethodContainer() {
       <PaymentMethodFrame>
         <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
         <PaymentMethod>
-          <ChoosedPaymentMethod />
+          <ChoosePaymentMethod isClicked={true} />
           <PaymentText>신용카드/간편결제/기타*</PaymentText>
         </PaymentMethod>
         <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>현금</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>5만원권</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>수표</PaymentText>
-        </PaymentMethod>
-        <PaymentMethod>
-          <ChoosePaymentMethod />
-          <PaymentText>카드(현장 단말기 결제)</PaymentText>
-        </PaymentMethod>
+        {["현금", "5만원권", "수표", "카드(현장 단말기 결제)"].map((method, index) => {
+          return (
+            <PaymentMethod key={index}>
+              <ChoosePaymentMethod isClicked={false} />
+              <PaymentText>{method}</PaymentText>
+            </PaymentMethod>
+          );
+        })}
       </PaymentMethodFrame>
       <CashReceiptButton>
-        <ChoosePaymentMethod />
+        <ChoosePaymentMethod isClicked={false} />
         <CashReceipText>현금영수증</CashReceipText>
       </CashReceiptButton>
     </PaymentMethodWrapper>
@@ -45,46 +37,38 @@ const PaymentMethodWrapper = styled.div`
 
 const PaymentMethodFrame = styled.div`
   background-color: ${theme.colors.white};
-  border-radius: 5px;
-  width: 335px;
-  height: 385px;
-  margin: 0 20px;
+  border-radius: 0.5rem;
+  width: 33.5rem;
+  height: 38.5rem;
+  margin: 0 2rem;
 `;
 
 const PaymentMethodTitle = styled.div`
-  font-size: 16px;
-  margin: 21px 0 16px 20px;
+  font-size: 1.6rem;
+  margin: 2.1rem 0 1.6rem 2rem;
   font-weight: bold;
 `;
 
 const PaymentMethod = styled.button`
   width: auto;
   height: atuo;
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: white;
-  border: 1px solid #545454;
-  border-radius: 10px;
-  margin: 0 0 16px 20px;
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
+  margin: 0 0 1.6rem 2rem;
 `;
 
-const ChoosedPaymentMethod = styled.button`
+const ChoosePaymentMethod = styled.div<{ isClicked: boolean }>`
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  background-color: ${theme.colors.red};
-  margin-right: 10px;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : `${theme.colors.gray100}`)};
+  margin-right: 1rem;
   border: none;
-`;
-
-const ChoosePaymentMethod = styled.div`
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  background-color: ${theme.colors.gray100};
-  margin-right: 10px;
 `;
 
 const PaymentText = styled.span`
@@ -93,15 +77,15 @@ const PaymentText = styled.span`
 `;
 
 const CashReceiptButton = styled.button`
-  width: 335px;
-  height: 41px;
+  width: 33.5rem;
+  height: 4.1rem;
   background-color: white;
   border: none;
   display: flex;
   align-items: center;
-  margin: 16px 20px;
-  border-radius: 5px;
-  padding-left: 30px;
+  margin: 1.6rem 2rem;
+  border-radius: 0.5rem;
+  padding-left: 3rem;
 `;
 
 const CashReceipText = styled.span`
