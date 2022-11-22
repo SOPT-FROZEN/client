@@ -44,45 +44,45 @@ const FilterButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 16px 10px 16px 20px;
+  margin: 1.6rem 1rem 1.6rem 2rem;
 `;
 
 const RecommendationButton = styled.button<{ isClicked: boolean }>`
-  width: 74px;
-  height: 40px;
+  width: 7.4rem;
+  height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body4};
   color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 2rem;
 `;
 
 const BurgerButton = styled.button<{ isClicked: boolean }>`
-  width: 87px;
-  height: 40px;
+  width: 8.7rem;
+  height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body4};
   color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 2rem;
 `;
 
 const SnackButton = styled.button<{ isClicked: boolean }>`
-  width: 99px;
-  height: 40px;
+  width: 9.9rem;
+  height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body4};
   color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 2rem;
 `;
 
 const DrinkButton = styled.button<{ isClicked: boolean }>`
-  width: 46px;
-  height: 40px;
+  width: 4.6rem;
+  height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body4};
   color: ${theme.colors.white};
-  padding: 10px;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 2rem;
 `;

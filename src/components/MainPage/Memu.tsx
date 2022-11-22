@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { icon_chicken } from "../../assets/image/asset";
-import { icon_cow } from "../../assets/image/asset";
-import { icon_letture } from "../../assets/image/asset";
-import { icon_pig } from "../../assets/image/asset";
-import { icon_tomato } from "../../assets/image/asset";
+import { icon_chicken, icon_cow, icon_letture, icon_pig, icon_tomato } from "../../assets/image/asset";
+
 import { ItemProps } from "../../pages/MainPage";
 
 interface Props {
@@ -37,47 +34,47 @@ export default function Memu(props: Props) {
 }
 
 const MemuBox = styled.div`
-  width: 164px;
-  height: 252px;
+  width: 16.4rem;
+  height: 25.2rem;
   background-color: ${theme.colors.white};
-  border-radius: 5px;
-  margin-bottom: 8px;
+  border-radius: 0.5rem;
+  margin-bottom: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
 
 const MemuImage = styled.img`
-  width: 146px;
-  height: 133px;
-  border-radius: 5px;
-  margin: 10px 9px 13px 9px;
+  width: 14.6rem;
+  height: 13.3rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0.9rem 1.3rem 0.9rem;
 `;
 
 const MemuName = styled.div`
-  margin-left: 10px;
+  margin-left: 1rem;
   ${theme.fonts.caption1};
   color: ${theme.colors.gray800};
-  margin-bottom: 5px;
-  width: 120px;
-  height: 20px;
+  margin-bottom: 0.5rem;
+  width: 12rem;
+  height: 2rem;
 `;
 
 const MemuAllergyList = styled.div`
-  margin-left: 10px;
-  margin-bottom: 25px;
-  height: 20px;
+  margin-left: 1rem;
+  margin-bottom: 2.5rem;
+  height: 2rem;
 `;
 
 const MemuAllergy = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 1.8rem;
+  height: 1.8rem;
 `;
 
 const MemuPrice = styled.div`
-  margin-left: 10px;
+  margin-left: 1rem;
   ${theme.fonts.subtitle1};
   color: ${theme.colors.green};
-  width: 55px;
-  height: 20px;
+  width: 5.5rem;
+  height: 2rem;
 `;
