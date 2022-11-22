@@ -11,6 +11,7 @@ export interface ItemProps {
   menuName: string;
   image: string;
   priceOnly: number;
+  allergy: string[];
 }
 
 export default function MainPage() {
@@ -21,50 +22,59 @@ export default function MainPage() {
       menuName: "트리플 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 2,
       menuName: "맥스파이시 버거",
       image: burger_image,
       priceOnly: 7500,
+      allergy: ["pig", "chicken", "lettuce"],
     },
     {
       menuId: 3,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["cow", "chicken", "lettuce"],
     },
     {
       menuId: 4,
       menuName: "1955 버거",
       image: burger_image,
       priceOnly: 8500,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 5,
       menuName: "트리플 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["lettuce"],
     },
     {
       menuId: 6,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "tomato", "chicken", "lettuce"],
     },
     {
       menuId: 7,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["tomato", "cow", "chicken", "lettuce"],
     },
     {
       menuId: 7,
       menuName: "페퍼로니 치즈 버거",
       image: burger_image,
       priceOnly: 5700,
+      allergy: ["pig", "cow", "chicken", "lettuce"],
     },
   ];
+
   const [menus, setMenus] = useState<ItemProps[]>(data);
   return (
     <>

@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { icon_chicken } from "../../assets/image/asset";
-import { icon_cow } from "../../assets/image/asset";
-import { icon_letture } from "../../assets/image/asset";
-import { icon_pig } from "../../assets/image/asset";
-import { icon_tomato } from "../../assets/image/asset";
 import { ItemProps } from "../../pages/MainPage";
+import Allergy from "../common/Allergy";
 
 interface Props {
   item: ItemProps;
@@ -24,11 +20,7 @@ export default function Memu(props: Props) {
         <MemuImage src={props.item.image}></MemuImage>
         <MemuName>{props.item.menuName}</MemuName>
         <MemuAllergyList>
-          <MemuAllergy src={icon_chicken} />
-          <MemuAllergy src={icon_cow} />
-          <MemuAllergy src={icon_letture} />
-          <MemuAllergy src={icon_pig} />
-          <MemuAllergy src={icon_tomato} />
+          <Allergy allergyData={props.item.allergy} />
         </MemuAllergyList>
         <MemuPrice>￦{menuPrice}</MemuPrice>
       </MemuBox>
@@ -67,11 +59,6 @@ const MemuAllergyList = styled.div`
   margin-left: 10px;
   margin-bottom: 25px;
   height: 20px;
-`;
-
-const MemuAllergy = styled.img`
-  width: 18px;
-  height: 18px;
 `;
 
 const MemuPrice = styled.div`
