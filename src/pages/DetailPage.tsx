@@ -6,7 +6,7 @@ import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset"
 import Allergy from "../components/common/Allergy";
 
 export default function DetailPage() {
-  const data = ["pig", "cow", "chicken", "lettuce"];
+  const data: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce"> = ["pig", "cow", "chicken", "lettuce"];
 
   return (
     <DetailBackground>

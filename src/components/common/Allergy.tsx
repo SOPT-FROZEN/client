@@ -3,13 +3,13 @@ import { AllergyPig, AllergyCow, AllergyChicken, AllergyLettuce, AllergyTomato }
 import styled from "styled-components";
 
 interface iAllergyInfo {
-  name: string;
+  name: "pig" | "cow" | "tomato" | "chicken" | "lettuce";
   src: string;
   altName: string;
 }
 
 interface iAllergyDataProps {
-  allergyData: string[];
+  allergyData: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
 }
 
 export default function Allergy({ allergyData }: iAllergyDataProps) {

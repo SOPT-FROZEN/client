@@ -11,12 +11,12 @@ export interface ItemProps {
   menuName: string;
   image: string;
   priceOnly: number;
-  allergy: string[];
+  allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
 }
 
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
-  const data = [
+  const data: ItemProps[] = [
     {
       menuId: 1,
       menuName: "트리플 치즈 버거",
