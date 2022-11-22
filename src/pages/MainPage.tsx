@@ -80,9 +80,17 @@ export default function MainPage() {
     <>
       <MainBackground>
         <Filter />
-        <MemuWrapper>
+        <MenuWrapper>
           {menus.map((item: iItem) => {
-            return <Memu item={item} key={item.menuId} />;
+            return (
+              <Menu
+                menuName={item.menuName}
+                image={item.image}
+                priceOnly={item.priceOnly}
+                allergy={item.allergy}
+                key={item.menuId}
+              />
+            );
           })}
         </MenuWrapper>
         <BuyButton>구매하기 ({quantity})</BuyButton>
