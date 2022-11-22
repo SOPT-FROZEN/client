@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import Filter from "../components/MainPage/Filter";
-import Memu from "../components/MainPage/Memu";
+import Menu from "../components/MainPage/Menu";
 import { burger_image } from "../assets/image/asset";
 
 export interface ItemProps {
@@ -70,11 +70,11 @@ export default function MainPage() {
     <>
       <MainBackground>
         <Filter />
-        <MemuWrapper>
+        <MenuWrapper>
           {menus.map((item: ItemProps) => {
-            return <Memu item={item} key={item.menuId} />;
+            return <Menu item={item} key={item.menuId} />;
           })}
-        </MemuWrapper>
+        </MenuWrapper>
         <BuyButton>구매하기 ({quantity})</BuyButton>
       </MainBackground>
     </>
@@ -87,7 +87,7 @@ const MainBackground = styled.div`
   background-color: ${theme.colors.bg};
 `;
 
-const MemuWrapper = styled.div`
+const MenuWrapper = styled.div`
   width: 33.5rem;
   height: auto;
   display: flex;

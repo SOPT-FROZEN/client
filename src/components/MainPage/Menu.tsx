@@ -10,30 +10,30 @@ interface Props {
   key: number;
 }
 
-export default function Memu(props: Props) {
+export default function Menu(props: Props) {
   const price = props.item.priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
   return (
     <>
-      <MemuBox>
-        <MemuImage src={props.item.image}></MemuImage>
-        <MemuName>{props.item.menuName}</MemuName>
-        <MemuAllergyList>
-          <MemuAllergy src={icon_chicken} />
-          <MemuAllergy src={icon_cow} />
-          <MemuAllergy src={icon_letture} />
-          <MemuAllergy src={icon_pig} />
-          <MemuAllergy src={icon_tomato} />
-        </MemuAllergyList>
-        <MemuPrice>￦{menuPrice}</MemuPrice>
-      </MemuBox>
+      <MenuBox>
+        <MenuImage src={props.item.image}></MenuImage>
+        <MenuName>{props.item.menuName}</MenuName>
+        <MenuAllergyList>
+          <MenuAllergy src={icon_chicken} />
+          <MenuAllergy src={icon_cow} />
+          <MenuAllergy src={icon_letture} />
+          <MenuAllergy src={icon_pig} />
+          <MenuAllergy src={icon_tomato} />
+        </MenuAllergyList>
+        <MenuPrice>￦{menuPrice}</MenuPrice>
+      </MenuBox>
     </>
   );
 }
 
-const MemuBox = styled.div`
+const MenuBox = styled.div`
   width: 16.4rem;
   height: 25.2rem;
   background-color: ${theme.colors.white};
@@ -44,14 +44,14 @@ const MemuBox = styled.div`
   align-items: flex-start;
 `;
 
-const MemuImage = styled.img`
+const MenuImage = styled.img`
   width: 14.6rem;
   height: 13.3rem;
   border-radius: 0.5rem;
   margin: 1rem 0.9rem 1.3rem 0.9rem;
 `;
 
-const MemuName = styled.div`
+const MenuName = styled.div`
   margin-left: 1rem;
   ${theme.fonts.caption1};
   color: ${theme.colors.gray800};
@@ -60,18 +60,18 @@ const MemuName = styled.div`
   height: 2rem;
 `;
 
-const MemuAllergyList = styled.div`
+const MenuAllergyList = styled.div`
   margin-left: 1rem;
   margin-bottom: 2.5rem;
   height: 2rem;
 `;
 
-const MemuAllergy = styled.img`
+const MenuAllergy = styled.img`
   width: 1.8rem;
   height: 1.8rem;
 `;
 
-const MemuPrice = styled.div`
+const MenuPrice = styled.div`
   margin-left: 1rem;
   ${theme.fonts.subtitle1};
   color: ${theme.colors.green};
