@@ -18,7 +18,7 @@ export interface iOrder {
   menuId: number;
   title: string;
   total: number;
-  details?: iSet[];
+  details: iSet[];
 }
 
 export default function CartPage() {
