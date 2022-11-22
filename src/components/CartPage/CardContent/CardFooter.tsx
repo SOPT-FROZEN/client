@@ -4,33 +4,6 @@ import { iOrder } from "../../../pages/CartPage";
 import theme from "../../../styles/theme";
 import Counter from "../../common/Counter";
 
-const CardContentFooter = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 13px 5px;
-  padding-bottom: 0px;
-  > button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 10px;
-
-    width: 161px;
-    height: 39px;
-
-    border: 1px solid #545454;
-    border-radius: 10px;
-
-    ${theme.fonts.caption1};
-    color: #545454;
-
-    cursor: pointer;
-  }
-`;
-
 interface iFooterProps {
   order: iOrder;
   setOrders: Dispatch<SetStateAction<iOrder[]>>;
@@ -59,3 +32,31 @@ export default function CardFooter({ order, setOrders, menuId, setId }: iFooterP
     </CardContentFooter>
   );
 }
+
+const CardContentFooter = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 13px 5px;
+  padding-bottom: 0px;
+`;
+
+const OptionButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+
+  width: 16.1rem;
+  height: 3.9rem;
+
+  border: 0.1rem solid #545454;
+  border-radius: 1rem;
+
+  ${theme.fonts.caption1};
+  color: #545454;
+
+  cursor: pointer;
+`;
