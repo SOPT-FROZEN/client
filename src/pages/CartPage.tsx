@@ -1,10 +1,12 @@
 // 장바구니 페이지
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AddressAndTime from "../components/CartPage/AddressAndTime";
 import Cards from "../components/CartPage/Cards";
 import theme from "../styles/theme";
 import { CartEmpty } from "../assets/image/asset";
+import { getCartAPI } from "../util/api";
+import { response } from "msw";
 
 export interface iSet {
   setId: number;
@@ -20,46 +22,12 @@ export interface iOrder {
 }
 
 export default function CartPage() {
-  const [orders, setOrders] = useState<iOrder[]>([
-    {
-      menuId: 1,
-      title: "트리플 치즈 버거",
-      total: 9900,
-      details: [
-        {
-          setId: 1,
-          set: "라지 세트",
-          price: 9900,
-          amount: 1,
-        },
-        {
-          setId: 2,
-          set: "단품",
-          price: 4500,
-          amount: 2,
-        },
-      ],
-    },
-    {
-      menuId: 2,
-      title: "트리플 치즈 버거",
-      total: 9900,
-      details: [
-        {
-          setId: 1,
-          set: "라지 세트",
-          price: 9900,
-          amount: 1,
-        },
-        {
-          setId: 2,
-          set: "단품",
-          price: 4500,
-          amount: 2,
-        },
-      ],
-    },
-  ]);
+  const [orders, setOrders] = useState<iOrder[]>([]);
+
+  useEffect(() => {
+    getCartAPI().then((result) => setOrders(result.data));
+  }, []);
+
   return (
     <CartWrapper>
       <Title>장바구니</Title>
@@ -70,7 +38,7 @@ export default function CartPage() {
             <button>항목 추가</button>
           </AddBtnContainer>
           <AddressAndTime />
-          <OkBtn>주문확인</OkBtn>
+          <OkBtn>주문 확인</OkBtn>
         </div>
       ) : (
         <div>

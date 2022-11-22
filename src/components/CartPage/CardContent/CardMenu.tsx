@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { CartMenuImage } from "../../../assets/image/asset";
 import theme from "../../../styles/theme";
 
-export default function CardMenu(detail: { set: string; price: number }) {
+interface iMenuProps {
+  set: string;
+  price: number;
+}
+
+export default function CardMenu({ set, price }: iMenuProps) {
   return (
     <CardContentMenu>
       <MenuImg src={CartMenuImage} alt="메뉴이미지" />
