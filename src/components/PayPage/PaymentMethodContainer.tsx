@@ -8,29 +8,29 @@ export default function PaymentMethodContainer() {
       <PaymentMethodFrame>
         <PaymentMethodTitle>온라인 결제</PaymentMethodTitle>
         <PaymentMethod>
-          <ChoosedPaymentMethod />
+          <ChoosePaymentMethod isClicked={true} />
           <PaymentText>신용카드/간편결제/기타*</PaymentText>
         </PaymentMethod>
         <PaymentMethodTitle>현장 결제</PaymentMethodTitle>
         <PaymentMethod>
-          <ChoosePaymentMethod />
+          <ChoosePaymentMethod isClicked={false} />
           <PaymentText>현금</PaymentText>
         </PaymentMethod>
         <PaymentMethod>
-          <ChoosePaymentMethod />
+          <ChoosePaymentMethod isClicked={false} />
           <PaymentText>5만원권</PaymentText>
         </PaymentMethod>
         <PaymentMethod>
-          <ChoosePaymentMethod />
+          <ChoosePaymentMethod isClicked={false} />
           <PaymentText>수표</PaymentText>
         </PaymentMethod>
         <PaymentMethod>
-          <ChoosePaymentMethod />
+          <ChoosePaymentMethod isClicked={false} />
           <PaymentText>카드(현장 단말기 결제)</PaymentText>
         </PaymentMethod>
       </PaymentMethodFrame>
       <CashReceiptButton>
-        <ChoosePaymentMethod />
+        <ChoosePaymentMethod isClicked={false} />
         <CashReceipText>현금영수증</CashReceipText>
       </CashReceiptButton>
     </PaymentMethodWrapper>
@@ -70,21 +70,13 @@ const PaymentMethod = styled.button`
   margin: 0 0 1.6rem 2rem;
 `;
 
-const ChoosedPaymentMethod = styled.button`
+const ChoosePaymentMethod = styled.div<{ isClicked: boolean }>`
   border-radius: 50%;
   width: 1.8rem;
   height: 1.8rem;
-  background-color: ${theme.colors.red};
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : `${theme.colors.gray100}`)};
   margin-right: 1rem;
   border: none;
-`;
-
-const ChoosePaymentMethod = styled.div`
-  border-radius: 50%;
-  width: 1.8rem;
-  height: 1.8rem;
-  background-color: ${theme.colors.gray100};
-  margin-right: 1rem;
 `;
 
 const PaymentText = styled.span`
