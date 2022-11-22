@@ -88,8 +88,8 @@ const CartWrapper = styled.section`
   display: flex;
   flex-direction: column;
 
-  padding: 17.2px 20px;
-  padding-bottom: 0px;
+  padding: 1.72rem 2rem;
+  padding-bottom: 0rem;
 
   min-height: 100vh; // 수정 요망
 
@@ -97,7 +97,7 @@ const CartWrapper = styled.section`
 `;
 
 const Title = styled.header`
-  margin-bottom: 25px;
+  margin-bottom: 2.5rem;
 
   ${theme.fonts.title1};
 `;
@@ -108,26 +108,26 @@ const EmptyContainer = styled.article`
   align-items: center;
 
   width: 100%;
-  margin-top: 132px;
-  margin-bottom: 226px;
+  margin-top: 13.2rem;
+  margin-bottom: 22.6rem;
 
   > img {
-    width: 145px;
-    height: 108px;
+    width: 14.5rem;
+    height: 10.8rem;
   }
 `;
 
 const AddBtnContainer = styled.button`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 1rem;
   > button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 42px;
+    padding: 1rem;
+    margin-bottom: 4.2rem;
 
     background-color: ${theme.colors.gray300};
-    border: 1px solid #a5a5a5;
-    border-radius: 10px;
+    border: 0.1rem solid #a5a5a5;
+    border-radius: 1rem;
 
     ${theme.fonts.caption1};
     color: ${theme.colors.gray700};
@@ -136,16 +136,16 @@ const AddBtnContainer = styled.button`
 `;
 
 const OkBtn = styled.button`
-  height: 50px;
+  height: 5rem;
   width: 100%;
 
-  padding: 10px;
-  margin-top: 15px;
-  margin-bottom: 24px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.4rem;
 
   background: #d14938;
-  border-radius: 10px;
-  filter: drop-shadow(0px 3px 13px rgba(0, 0, 0, 0.25));
+  border-radius: 1rem;
+  filter: drop-shadow(0rem 0.3rem 1.3rem rgba(0, 0, 0, 0.25));
 
   color: ${theme.colors.white};
   ${theme.fonts.title2};
