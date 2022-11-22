@@ -1,14 +1,19 @@
 // 결제페이지
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import PaymentMethod from "../components/PayPage/PaymentMethodContainer";
 
 export default function PayPage() {
-  const price = 9900;
+  const [price, setPrice] = useState(9900);
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const totalPrice: string = price.toString().replace(priceRegex, ",");
   const detailPrice: string = price.toString().replace(priceRegex, ",");
+
+  // useEffect(() => {
+  //   get
+  // }, []);
+
   return (
     <>
       <PaymentBackground>
