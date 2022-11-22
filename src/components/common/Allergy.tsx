@@ -41,7 +41,6 @@ export default function Allergy({ allergyData }: iAllergyDataProps) {
     },
   ];
 
-  console.log(allergyData);
   return (
     <>
       {allergyInfo.map(
