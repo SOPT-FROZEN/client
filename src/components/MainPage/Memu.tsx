@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { ItemProps } from "../../pages/MainPage";
+import { iItem } from "../../pages/MainPage";
 import Allergy from "../common/Allergy";
 
-interface Props {
-  item: ItemProps;
+interface iItemProps {
+  item: iItem;
   key: number;
 }
 
-export default function Memu(props: Props) {
+export default function Memu(props: iItemProps) {
   const price = props.item.priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");

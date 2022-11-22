@@ -6,7 +6,7 @@ import Filter from "../components/MainPage/Filter";
 import Memu from "../components/MainPage/Memu";
 import { burger_image } from "../assets/image/asset";
 
-export interface ItemProps {
+export interface iItem {
   menuId: number;
   menuName: string;
   image: string;
@@ -16,7 +16,7 @@ export interface ItemProps {
 
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
-  const data: ItemProps[] = [
+  const data: iItem[] = [
     {
       menuId: 1,
       menuName: "트리플 치즈 버거",
@@ -75,13 +75,13 @@ export default function MainPage() {
     },
   ];
 
-  const [menus, setMenus] = useState<ItemProps[]>(data);
+  const [menus, setMenus] = useState<iItem[]>(data);
   return (
     <>
       <MainBackground>
         <Filter />
         <MemuWrapper>
-          {menus.map((item: ItemProps) => {
+          {menus.map((item: iItem) => {
             return <Memu item={item} key={item.menuId} />;
           })}
         </MemuWrapper>
