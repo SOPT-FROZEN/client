@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { CartMenuImage } from "../../../assets/image/asset";
 import theme from "../../../styles/theme";
+import { priceToString } from "../../../util/priceToString";
 
 interface iMenuProps {
   set: string;
@@ -15,7 +16,7 @@ export default function CardMenu({ set, price }: iMenuProps) {
       <DetailContainer>
         <DetailTitle>
           {set}
-          <span>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+          <span>{priceToString(price)}</span>
         </DetailTitle>
         <DetailOptions>
           <li>사이드 - 후렌치 후라이</li>

@@ -5,6 +5,7 @@ import theme from "../../styles/theme";
 import CardFooter from "./CardContent/CardFooter";
 import CardHeader from "./CardContent/CardHeader";
 import CardMenu from "./CardContent/CardMenu";
+import { priceToString } from "../../util/priceToString";
 
 interface iCardsProps {
   orders: iOrder[];
@@ -18,7 +19,7 @@ export default function Cards({ orders, setOrders }: iCardsProps) {
         <Card key={menuIdx}>
           <MenuHeader>
             <MenuTitle>{order.title}</MenuTitle>
-            <MenuPrice>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</MenuPrice>
+            <MenuPrice>₩ {priceToString(order.total)}</MenuPrice>
           </MenuHeader>
           {order.details?.map((detail: iSet, setIdx: number) => (
             <CardContent key={setIdx}>
