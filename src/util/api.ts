@@ -20,3 +20,17 @@ export const getMenuDetail = async (menuId: string) => {
     console.log(error);
   }
 };
+
+// 장바구니 담기 POST API
+export const postCartAPI = async (menuId: string, large: number, basicSet: number, only: number) => {
+  try {
+    const res = await axios.post(`/cart/${menuId}`, {
+      largeSet: large,
+      set: basicSet,
+      only: only,
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
