@@ -141,12 +141,12 @@ const DrinkButton = styled.button<{ isClicked: boolean }>`
 
 const MenuWrapper = styled.div`
   width: 33.5rem;
-  height: auto;
+  height: 80rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 2rem;
 `;
 
