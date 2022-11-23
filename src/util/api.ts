@@ -10,3 +10,13 @@ export const getCartAPI = async () => {
     console.log(error);
   }
 };
+
+//메뉴 상세 페이지 조회 GET API
+export const getMenuDetail = async (menuId: string) => {
+  try {
+    const res = await axios.get(`/menu/${menuId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

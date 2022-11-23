@@ -1,12 +1,38 @@
 // 메뉴 상세보기 페이지
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset";
 import Allergy from "../components/common/Allergy";
+import { useParams } from "react-router-dom";
+import { getMenuDetail } from "../util/api";
+import { priceToString } from "../util/priceToString";
+
+export interface iDetailInfo {
+  menuId: string;
+  menuName: string;
+  priceLarge: number;
+  priceSet: number;
+  priceOnly: number;
+  allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
+}
 
 export default function DetailPage() {
-  const data: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce"> = ["pig", "cow", "chicken", "lettuce"];
+  const { menuId } = useParams();
+  const [detailInfo, setDetailInfo] = useState<iDetailInfo>({
+    menuId: "",
+    menuName: "",
+    priceLarge: 0,
+    priceSet: 0,
+    priceOnly: 0,
+    allergy: [],
+  });
+
+  useEffect(() => {
+    {
+      menuId && getMenuDetail(menuId).then((result) => setDetailInfo(result.data));
+    }
+  }, [menuId]);
 
   return (
     <DetailBackground>
@@ -17,9 +43,9 @@ export default function DetailPage() {
       <DetailDividingLine></DetailDividingLine>
       <DetailMenuImg src={BurgerImage} alt="트리플 치즈 버거 이미지"></DetailMenuImg>
       <DetailInfoBoard>
-        <DetailMenuName>트리플 치즈 버거</DetailMenuName>
+        <DetailMenuName>{detailInfo.menuName}</DetailMenuName>
         <DetailAllergyInfo>
-          <Allergy allergyData={data} />
+          <Allergy allergyData={detailInfo.allergy} />
         </DetailAllergyInfo>
       </DetailInfoBoard>
 
@@ -30,7 +56,7 @@ export default function DetailPage() {
           <AddSetBoardTitle>라지 세트</AddSetBoardTitle>
         </AddSetBoardTitleWrap>
 
-        <AddSetBoardPrice>₩ 9,900</AddSetBoardPrice>
+        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceLarge)}</AddSetBoardPrice>
         <CountSelectedSetWrap>
           <RemoveSelectedSetBtn type="button">
             <RemoveSetImg src={RemoveSet}></RemoveSetImg>
@@ -47,7 +73,7 @@ export default function DetailPage() {
         <AddSetBoardTitleWrap>
           <AddSetBoardTitle>세트</AddSetBoardTitle>
         </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ 9,300</AddSetBoardPrice>
+        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceSet)}</AddSetBoardPrice>
 
         <CountSelectedSetWrap>
           <RemoveSelectedSetBtn type="button">
@@ -65,7 +91,7 @@ export default function DetailPage() {
         <AddSetBoardTitleWrap>
           <AddSetBoardTitle>단품</AddSetBoardTitle>
         </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ 7,500</AddSetBoardPrice>
+        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceOnly)}</AddSetBoardPrice>
 
         <CountSelectedSetWrap>
           <RemoveSelectedSetBtn type="button">
@@ -97,7 +123,7 @@ export default function DetailPage() {
         </AddToCartPriceWrap>
         <AddToCartSetInfoWrap>
           <AddToCartSetName>라지 세트 (1)</AddToCartSetName>
-          <AddToCartSetPrice>₩ 9,900</AddToCartSetPrice>
+          <AddToCartSetPrice>₩ {priceToString(detailInfo.priceLarge)}</AddToCartSetPrice>
         </AddToCartSetInfoWrap>
         <AddToCartButton type="button">장바구니에 담기</AddToCartButton>
       </AddToCartModal>
