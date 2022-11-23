@@ -10,3 +10,13 @@ export const getCartAPI = async () => {
     console.log(error);
   }
 };
+
+// 메인페이지 메뉴 필터링 GET API
+export const getCategorydMenu = async (categoryName: string) => {
+  try {
+    const res = await axios.get(`/category/${categoryName}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

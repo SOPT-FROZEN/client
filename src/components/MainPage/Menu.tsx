@@ -2,26 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import Allergy from "../common/Allergy";
-
-import { iItem } from "../../pages/MainPage";
+import { burger_image } from "../../assets/image/asset";
+import { useNavigate } from "react-router-dom";
 
 interface iItemProps {
   menuName: string;
-  image: string;
   priceOnly: number;
   allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
   key: number;
+  menuId: number;
 }
 
-export default function Menu({ menuName, image, allergy, priceOnly }: iItemProps) {
+export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iItemProps) {
+  const navigate = useNavigate();
   const price = priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
+  const gotoDeatil = (menuId: number) => {
+    navigate(`/${menuId}`);
+  };
+
   return (
     <>
-      <MenuBox>
-        <MenuImage src={image}></MenuImage>
+      <MenuBox onClick={() => gotoDeatil(menuId)}>
+        <MenuImage src={burger_image}></MenuImage>
         <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
           <Allergy allergyData={allergy} />
@@ -41,6 +46,7 @@ const MenuBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 `;
 
 const MenuImage = styled.img`
@@ -63,11 +69,6 @@ const MenuAllergyList = styled.div`
   margin-left: 1rem;
   margin-bottom: 2.5rem;
   height: 2rem;
-`;
-
-const MenuAllergy = styled.img`
-  width: 1.8rem;
-  height: 1.8rem;
 `;
 
 const MenuPrice = styled.div`
