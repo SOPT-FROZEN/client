@@ -7,9 +7,10 @@ import Allergy from "../components/common/Allergy";
 import { useParams } from "react-router-dom";
 import { getMenuDetail } from "../util/api";
 import { priceToString } from "../util/priceToString";
+import Counter from "../components/common/Counter";
 
 export interface iDetailInfo {
-  menuId: string;
+  menuId: number;
   menuName: string;
   priceLarge: number;
   priceSet: number;
@@ -17,10 +18,15 @@ export interface iDetailInfo {
   allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
 }
 
+type HeaderProps = {
+  children: JSX.Element;
+};
+
 export default function DetailPage() {
   const { menuId } = useParams();
+  const [count, setCount] = useState(1);
   const [detailInfo, setDetailInfo] = useState<iDetailInfo>({
-    menuId: "",
+    menuId: 0,
     menuName: "",
     priceLarge: 0,
     priceSet: 0,
@@ -51,60 +57,20 @@ export default function DetailPage() {
 
       <AddSetTitle>세부 항목을 선택하세요</AddSetTitle>
 
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>라지 세트</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-
-        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceLarge)}</AddSetBoardPrice>
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>세트</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceSet)}</AddSetBoardPrice>
-
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>단품</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ {priceToString(detailInfo.priceOnly)}</AddSetBoardPrice>
-
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
+      {["라지세트", "세트", "단품"].map((set) => (
+        <AddSetBoard key={set}>
+          <AddSetBoardTitleWrap>
+            <AddSetBoardTitle>{set}</AddSetBoardTitle>
+          </AddSetBoardTitleWrap>
+          <AddSetBoardPrice>
+            ₩{" "}
+            {priceToString(
+              set === "라지세트" ? detailInfo.priceLarge : set === "세트" ? detailInfo.priceSet : detailInfo.priceOnly,
+            )}
+          </AddSetBoardPrice>
+          <Counter count={count} setCount={setCount}></Counter>
+        </AddSetBoard>
+      ))}
 
       <SelectedSetDetail>
         <SelectedSetName>라지 세트 (1)</SelectedSetName>
@@ -254,7 +220,7 @@ const AddSetBoardPrice = styled.div`
 
   font-size: ${theme.fonts.subtitle1};
 
-  margin: 2rem 0rem 2rem 1.1rem;
+  margin: 2rem 4.3rem 2rem 1.1rem;
 
   display: flex;
   align-items: center;

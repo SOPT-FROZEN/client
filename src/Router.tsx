@@ -9,7 +9,7 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/:menuId" element={<DetailPage />} />
+        <Route path="menu/:menuId" element={<DetailPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/pay" element={<PayPage />} />
       </Routes>
