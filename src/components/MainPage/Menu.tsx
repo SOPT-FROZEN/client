@@ -3,22 +3,29 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 import Allergy from "../common/Allergy";
 import { burger_image } from "../../assets/image/asset";
+import { useNavigate } from "react-router-dom";
 
 interface iItemProps {
   menuName: string;
   priceOnly: number;
   allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
   key: number;
+  menuId: number;
 }
 
-export default function Menu({ menuName, allergy, priceOnly }: iItemProps) {
+export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iItemProps) {
+  const navigate = useNavigate();
   const price = priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
+  const gotoDeatil = (menuId: number) => {
+    navigate(`/${menuId}`);
+  };
+
   return (
     <>
-      <MenuBox>
+      <MenuBox onClick={() => gotoDeatil(menuId)}>
         <MenuImage src={burger_image}></MenuImage>
         <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
@@ -39,6 +46,7 @@ const MenuBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 `;
 
 const MenuImage = styled.img`

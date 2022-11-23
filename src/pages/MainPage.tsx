@@ -35,14 +35,17 @@ export default function MainPage() {
     setCurrentMenu({ ...currentMenu, recommendation: true, burger: false, snacks: false, drink: false });
     getMenu("recommend");
   };
+
   const clickBurgerButton = () => {
     setCurrentMenu({ ...currentMenu, recommendation: false, burger: true, snacks: false, drink: false });
     getMenu("burger");
   };
+
   const clickSnaksButton = () => {
     setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: true, drink: false });
     getMenu("snack");
   };
+
   const clickDrinkButton = () => {
     setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: false, drink: true });
     getMenu("drink");
@@ -68,7 +71,13 @@ export default function MainPage() {
         <MenuWrapper>
           {menus.map((item: iItem) => {
             return (
-              <Menu menuName={item.menuName} priceOnly={item.priceOnly} allergy={item.allergy} key={item.menuId} />
+              <Menu
+                menuName={item.menuName}
+                priceOnly={item.priceOnly}
+                allergy={item.allergy}
+                key={item.menuId}
+                menuId={item.menuId}
+              />
             );
           })}
         </MenuWrapper>
