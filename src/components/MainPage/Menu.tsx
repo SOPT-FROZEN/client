@@ -2,18 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import Allergy from "../common/Allergy";
-
-import { iItem } from "../../pages/MainPage";
+import { burger_image } from "../../assets/image/asset";
 
 interface iItemProps {
   menuName: string;
-  image: string;
   priceOnly: number;
   allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
   key: number;
 }
 
-export default function Menu({ menuName, image, allergy, priceOnly }: iItemProps) {
+export default function Menu({ menuName, allergy, priceOnly }: iItemProps) {
   const price = priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
@@ -21,7 +19,7 @@ export default function Menu({ menuName, image, allergy, priceOnly }: iItemProps
   return (
     <>
       <MenuBox>
-        <MenuImage src={image}></MenuImage>
+        <MenuImage src={burger_image}></MenuImage>
         <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
           <Allergy allergyData={allergy} />
@@ -63,11 +61,6 @@ const MenuAllergyList = styled.div`
   margin-left: 1rem;
   margin-bottom: 2.5rem;
   height: 2rem;
-`;
-
-const MenuAllergy = styled.img`
-  width: 1.8rem;
-  height: 1.8rem;
 `;
 
 const MenuPrice = styled.div`
