@@ -20,7 +20,7 @@ export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iIte
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
   const gotoDeatil = (menuId: number) => {
-    navigate(`/${menuId}`);
+    navigate(`/menu/${menuId}`);
   };
 
   return (
