@@ -5,18 +5,16 @@ import theme from "../styles/theme";
 import PaymentMethod from "../components/PayPage/PaymentMethodContainer";
 import { getCartAPI } from "../util/api";
 import { iOrder } from "./CartPage";
+import { priceToString } from "../util/priceToString";
 
 export default function PayPage() {
   const [receipt, setReceipt] = useState<iOrder[]>([]);
-  const [price, setPrice] = useState(0);
-  const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
-  //const totalPrice: string = price.toString().replace(priceRegex, ",");
-  ///const detailPrice: string = price.toString().replace(priceRegex, ",");
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     // receipt/total을 통해서 totalPrice 업데이트
     receipt.map((order) => {
-      setPrice((prev) => (prev += order.total));
+      setTotalPrice((prev) => (prev += order.total));
     });
   }, [receipt]);
 
@@ -34,7 +32,7 @@ export default function PayPage() {
       <PaymentButtonWrapper>
         <TotalPriceWrapper>
           <TotalPriceTitle>총액</TotalPriceTitle>
-          <TotalPrice>￦ {price}</TotalPrice>
+          <TotalPrice>￦ {priceToString(totalPrice)}</TotalPrice>
         </TotalPriceWrapper>
         <DetailWrapper>
           {receipt.map((order, index) => (
@@ -42,7 +40,7 @@ export default function PayPage() {
               <DetailPriceTitle>
                 {order.title} ({order.details.length})
               </DetailPriceTitle>
-              <DetailPrice>￦ {order.total}</DetailPrice>
+              <DetailPrice>￦ {priceToString(order.total)}</DetailPrice>
             </DetailPriceWrapper>
           ))}
         </DetailWrapper>

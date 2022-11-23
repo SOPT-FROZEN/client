@@ -22,7 +22,6 @@ export interface iOrder {
 }
 
 export default function CartPage() {
-  const navigate = useNavigate();
   const [orders, setOrders] = useState<iOrder[]>([]);
   const navigate = useNavigate();
 
