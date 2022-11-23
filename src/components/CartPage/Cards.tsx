@@ -5,6 +5,7 @@ import theme from "../../styles/theme";
 import CardFooter from "./CardContent/CardFooter";
 import CardHeader from "./CardContent/CardHeader";
 import CardMenu from "./CardContent/CardMenu";
+import { priceToString } from "../../util/priceToString";
 
 export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<SetStateAction<iOrder[]>> }) {
   return (
@@ -13,13 +14,13 @@ export default function Cards(props: { orders: iOrder[]; setOrders: Dispatch<Set
         <Card key={menuIdx}>
           <MenuHeader>
             <MenuTitle>{order.title}</MenuTitle>
-            <MenuPrice>₩ {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</MenuPrice>
+            <MenuPrice>₩ {priceToString(order.total)}</MenuPrice>
           </MenuHeader>
           {order.details?.map((detail: iSet, setIdx: number) => (
             <CardContent key={setIdx}>
               <CardHeader setOrders={props.setOrders} menuId={menuIdx} setId={setIdx} />
               <CardMenu set={detail.set} price={detail.price} />
-              <CardFooter order={order} setOrders={props.setOrders} menuId={order.menuId} setId={index} />
+              <CardFooter order={order} setOrders={props.setOrders} menuId={order.menuId} setId={setIdx} />
             </CardContent>
           ))}
         </Card>
