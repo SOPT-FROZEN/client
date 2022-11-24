@@ -49,7 +49,7 @@ export default function DetailPage() {
 
   const handleClick = () => {
     {
-      menuId && postCartAPI(menuId, largeCount, basicSetCount, onlyCount).then((result) => console.log(result));
+      menuId && postCartAPI(menuId, largeCount, basicSetCount, onlyCount);
     }
   };
 
