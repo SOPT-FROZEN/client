@@ -1,12 +1,44 @@
 // 메뉴 상세보기 페이지
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset";
 import Allergy from "../components/common/Allergy";
+import { useParams } from "react-router-dom";
+import { getMenuDetail } from "../util/api";
+import { priceToString } from "../util/priceToString";
+import Counter from "../components/common/Counter";
+
+export interface iDetailInfo {
+  menuId: number;
+  menuName: string;
+  priceLarge: number;
+  priceSet: number;
+  priceOnly: number;
+  allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
+}
+
+type HeaderProps = {
+  children: JSX.Element;
+};
 
 export default function DetailPage() {
-  const data: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce"> = ["pig", "cow", "chicken", "lettuce"];
+  const { menuId } = useParams();
+  const [count, setCount] = useState(1);
+  const [detailInfo, setDetailInfo] = useState<iDetailInfo>({
+    menuId: 0,
+    menuName: "",
+    priceLarge: 0,
+    priceSet: 0,
+    priceOnly: 0,
+    allergy: [],
+  });
+
+  useEffect(() => {
+    {
+      menuId && getMenuDetail(menuId).then((result) => setDetailInfo(result.data));
+    }
+  }, [menuId]);
 
   return (
     <DetailBackground>
@@ -17,68 +49,28 @@ export default function DetailPage() {
       <DetailDividingLine></DetailDividingLine>
       <DetailMenuImg src={BurgerImage} alt="트리플 치즈 버거 이미지"></DetailMenuImg>
       <DetailInfoBoard>
-        <DetailMenuName>트리플 치즈 버거</DetailMenuName>
+        <DetailMenuName>{detailInfo.menuName}</DetailMenuName>
         <DetailAllergyInfo>
-          <Allergy allergyData={data} />
+          <Allergy allergyData={detailInfo.allergy} />
         </DetailAllergyInfo>
       </DetailInfoBoard>
 
       <AddSetTitle>세부 항목을 선택하세요</AddSetTitle>
 
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>라지 세트</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-
-        <AddSetBoardPrice>₩ 9,900</AddSetBoardPrice>
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>세트</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ 9,300</AddSetBoardPrice>
-
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
-      <AddSetBoard>
-        <AddSetBoardTitleWrap>
-          <AddSetBoardTitle>단품</AddSetBoardTitle>
-        </AddSetBoardTitleWrap>
-        <AddSetBoardPrice>₩ 7,500</AddSetBoardPrice>
-
-        <CountSelectedSetWrap>
-          <RemoveSelectedSetBtn type="button">
-            <RemoveSetImg src={RemoveSet}></RemoveSetImg>
-          </RemoveSelectedSetBtn>
-
-          <CountedSetNum>1</CountedSetNum>
-
-          <AddSelectedSetBtn type="button">
-            <AddSetImg src={AddSet}></AddSetImg>
-          </AddSelectedSetBtn>
-        </CountSelectedSetWrap>
-      </AddSetBoard>
+      {["라지세트", "세트", "단품"].map((set) => (
+        <AddSetBoard key={set}>
+          <AddSetBoardTitleWrap>
+            <AddSetBoardTitle>{set}</AddSetBoardTitle>
+          </AddSetBoardTitleWrap>
+          <AddSetBoardPrice>
+            ₩{" "}
+            {priceToString(
+              set === "라지세트" ? detailInfo.priceLarge : set === "세트" ? detailInfo.priceSet : detailInfo.priceOnly,
+            )}
+          </AddSetBoardPrice>
+          <Counter count={count} setCount={setCount}></Counter>
+        </AddSetBoard>
+      ))}
 
       <SelectedSetDetail>
         <SelectedSetName>라지 세트 (1)</SelectedSetName>
@@ -97,7 +89,7 @@ export default function DetailPage() {
         </AddToCartPriceWrap>
         <AddToCartSetInfoWrap>
           <AddToCartSetName>라지 세트 (1)</AddToCartSetName>
-          <AddToCartSetPrice>₩ 9,900</AddToCartSetPrice>
+          <AddToCartSetPrice>₩ {priceToString(detailInfo.priceLarge)}</AddToCartSetPrice>
         </AddToCartSetInfoWrap>
         <AddToCartButton type="button">장바구니에 담기</AddToCartButton>
       </AddToCartModal>
@@ -182,7 +174,6 @@ const DetailAllergyInfo = styled.div`
   justify-content: center;
 `;
 
-
 const AddSetTitle = styled.h1`
   font-size: ${theme.fonts.title2};
 
@@ -229,7 +220,7 @@ const AddSetBoardPrice = styled.div`
 
   font-size: ${theme.fonts.subtitle1};
 
-  margin: 2rem 0rem 2rem 1.1rem;
+  margin: 2rem 4.3rem 2rem 1.1rem;
 
   display: flex;
   align-items: center;

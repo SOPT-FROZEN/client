@@ -19,6 +19,7 @@ export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iIte
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
+
   return (
     <>
       <MenuBox onClick={() => navigate(`/${menuId}`)}>
