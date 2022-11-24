@@ -1,10 +1,9 @@
 // 메뉴 전체 보여줄 메인페이지
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import Filter from "../components/MainPage/Filter";
 import Menu from "../components/MainPage/Menu";
-import { burger_image } from "../assets/image/asset";
+import { getCategorydMenu } from "../util/api";
 
 export interface iItem {
   menuId: number;
@@ -16,79 +15,66 @@ export interface iItem {
 
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
-  const data: iItem[] = [
-    {
-      menuId: 1,
-      menuName: "트리플 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["pig", "cow", "chicken", "lettuce"],
-    },
-    {
-      menuId: 2,
-      menuName: "맥스파이시 버거",
-      image: burger_image,
-      priceOnly: 7500,
-      allergy: ["pig", "chicken", "lettuce"],
-    },
-    {
-      menuId: 3,
-      menuName: "페퍼로니 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["cow", "chicken", "lettuce"],
-    },
-    {
-      menuId: 4,
-      menuName: "1955 버거",
-      image: burger_image,
-      priceOnly: 8500,
-      allergy: ["pig", "cow", "chicken", "lettuce"],
-    },
-    {
-      menuId: 5,
-      menuName: "트리플 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["lettuce"],
-    },
-    {
-      menuId: 6,
-      menuName: "페퍼로니 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["pig", "tomato", "chicken", "lettuce"],
-    },
-    {
-      menuId: 7,
-      menuName: "페퍼로니 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["tomato", "cow", "chicken", "lettuce"],
-    },
-    {
-      menuId: 7,
-      menuName: "페퍼로니 치즈 버거",
-      image: burger_image,
-      priceOnly: 5700,
-      allergy: ["pig", "cow", "chicken", "lettuce"],
-    },
-  ];
+  const [menus, setMenus] = useState<iItem[]>([]);
+  const Categories = {
+    RECOMMEND: "추천 메뉴",
+    BURGER: "버거&세트",
+    SNACK: "스낵&사이드",
+    DRINK: "음료",
+  };
 
-  const [menus, setMenus] = useState<iItem[]>(data);
+  const [currentMenu, setCurrentMenu] = useState(Categories.RECOMMEND);
+
+  useEffect(() => {
+    getMenu("burger");
+  }, []);
+
+  const onClickCategoryButton = (e: { currentTarget: { innerText: string } }) => {
+    if (e.currentTarget.innerText === Categories.RECOMMEND) {
+      setCurrentMenu(Categories.RECOMMEND);
+      getMenu("recommend");
+    } else if (e.currentTarget.innerText === Categories.BURGER) {
+      setCurrentMenu(Categories.BURGER);
+      getMenu("burger");
+    } else if (e.currentTarget.innerText === Categories.SNACK) {
+      setCurrentMenu(Categories.SNACK);
+      getMenu("snack");
+    } else {
+      setCurrentMenu(Categories.DRINK);
+      getMenu("drink");
+    }
+  };
+
+  const getMenu = (categoryName: string) => {
+    getCategorydMenu(categoryName).then((result: { data: React.SetStateAction<iItem[]> }) => setMenus(result.data));
+  };
+
   return (
     <>
       <MainBackground>
-        <Filter />
+        <CategoryButtonWrapper>
+          {[Categories.RECOMMEND, Categories.BURGER, Categories.SNACK, Categories.DRINK].map(
+            (category: string, index: number) => {
+              return (
+                <CategoryButton
+                  key={index}
+                  onClick={onClickCategoryButton}
+                  isClicked={currentMenu === category ? true : false}>
+                  {category}
+                </CategoryButton>
+              );
+            },
+          )}
+        </CategoryButtonWrapper>
         <MenuWrapper>
           {menus.map((item: iItem) => {
             return (
               <Menu
                 menuName={item.menuName}
-                image={item.image}
                 priceOnly={item.priceOnly}
                 allergy={item.allergy}
                 key={item.menuId}
+                menuId={item.menuId}
               />
             );
           })}
@@ -104,15 +90,31 @@ const MainBackground = styled.div`
   height: auto;
   background-color: ${theme.colors.bg};
 `;
+const CategoryButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.6rem 1rem 1.6rem 2rem;
+`;
+
+const CategoryButton = styled.button<{ isClicked: boolean }>`
+  width: 7.4rem;
+  height: 4rem;
+  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
+  ${theme.fonts.body4};
+  color: ${theme.colors.white};
+  padding: 1rem;
+  border-radius: 2rem;
+`;
 
 const MenuWrapper = styled.div`
   width: 33.5rem;
-  height: auto;
+  height: 80rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 2rem;
 `;
 
