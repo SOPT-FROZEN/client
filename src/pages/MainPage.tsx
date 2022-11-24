@@ -86,7 +86,10 @@ export default function MainPage() {
             );
           })}
         </MenuWrapper>
-        <BuyButton onClick={() => navigate("/cart")} isBuyButtonActive={isBuyButtonActive}>
+        <BuyButton
+          onClick={() => navigate("/cart")}
+          disabled={isBuyButtonActive ? false : true}
+          isBuyButtonActive={isBuyButtonActive}>
           구매하기({quantity})
         </BuyButton>
       </MainBackground>
