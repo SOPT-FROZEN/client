@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import Menu from "../components/MainPage/Menu";
-import { getCategorydMenu } from "../util/api";
+import { getCartAPI, getCategorydMenu } from "../util/api";
+import { useNavigate } from "react-router-dom";
 
 export interface iItem {
   menuId: number;
@@ -14,6 +15,7 @@ export interface iItem {
 }
 
 export default function MainPage() {
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState<number>(0);
   const [menus, setMenus] = useState<iItem[]>([]);
   const Categories = {
@@ -22,11 +24,16 @@ export default function MainPage() {
     SNACK: "스낵&사이드",
     DRINK: "음료",
   };
+  const [isBuyButtonActive, setIsBuyButtonActive] = useState(false);
 
   const [currentMenu, setCurrentMenu] = useState(Categories.RECOMMEND);
 
   useEffect(() => {
     getMenu("burger");
+    getCartAPI().then((result) => {
+      setQuantity(result.data.length);
+      result.data.length > 1 && setIsBuyButtonActive(true);
+    });
   }, []);
 
   const onClickCategoryButton = (e: { currentTarget: { innerText: string } }) => {
@@ -79,7 +86,9 @@ export default function MainPage() {
             );
           })}
         </MenuWrapper>
-        <BuyButton>구매하기 ({quantity})</BuyButton>
+        <BuyButton onClick={() => navigate("/cart")} isBuyButtonActive={isBuyButtonActive}>
+          구매하기({quantity})
+        </BuyButton>
       </MainBackground>
     </>
   );
@@ -118,10 +127,10 @@ const MenuWrapper = styled.div`
   margin: 0 2rem;
 `;
 
-const BuyButton = styled.button`
+const BuyButton = styled.button<{ isBuyButtonActive: boolean }>`
   width: 33.5rem;
   height: 5rem;
-  background-color: #dddddd;
+  background-color: ${({ isBuyButtonActive }) => (isBuyButtonActive ? `${theme.colors.yellow}` : "#dddddd")};
   ${theme.fonts.title2};
   color: ${theme.colors.white};
   border-radius: 1rem;
@@ -131,4 +140,5 @@ const BuyButton = styled.button`
   z-index: 1000;
   margin: 0 2rem;
   box-shadow: 0 0.3rem 1.3rem 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 `;
