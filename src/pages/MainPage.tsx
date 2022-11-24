@@ -16,57 +16,55 @@ export interface iItem {
 export default function MainPage() {
   const [quantity, setQuantity] = useState<number>(0);
   const [menus, setMenus] = useState<iItem[]>([]);
-  const [currentMenu, setCurrentMenu] = useState({
-    recommendation: false,
-    burger: true,
-    snacks: false,
-    drink: false,
-  });
+  const Categories = {
+    RECOMMEND: "추천 메뉴",
+    BURGER: "버거&세트",
+    SNACK: "스낵&사이드",
+    DRINK: "음료",
+  };
+
+  const [currentMenu, setCurrentMenu] = useState(Categories.RECOMMEND);
 
   useEffect(() => {
     getMenu("burger");
   }, []);
 
+  const onClickCategoryButton = (e: { currentTarget: { innerText: string } }) => {
+    if (e.currentTarget.innerText === Categories.RECOMMEND) {
+      setCurrentMenu(Categories.RECOMMEND);
+      getMenu("recommend");
+    } else if (e.currentTarget.innerText === Categories.BURGER) {
+      setCurrentMenu(Categories.BURGER);
+      getMenu("burger");
+    } else if (e.currentTarget.innerText === Categories.SNACK) {
+      setCurrentMenu(Categories.SNACK);
+      getMenu("snack");
+    } else {
+      setCurrentMenu(Categories.DRINK);
+      getMenu("drink");
+    }
+  };
+
   const getMenu = (categoryName: string) => {
     getCategorydMenu(categoryName).then((result: { data: React.SetStateAction<iItem[]> }) => setMenus(result.data));
-  };
-
-  const clickRecommendationButton = () => {
-    setCurrentMenu({ ...currentMenu, recommendation: true, burger: false, snacks: false, drink: false });
-    getMenu("recommend");
-  };
-
-  const clickBurgerButton = () => {
-    setCurrentMenu({ ...currentMenu, recommendation: false, burger: true, snacks: false, drink: false });
-    getMenu("burger");
-  };
-
-  const clickSnaksButton = () => {
-    setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: true, drink: false });
-    getMenu("snack");
-  };
-
-  const clickDrinkButton = () => {
-    setCurrentMenu({ ...currentMenu, recommendation: false, burger: false, snacks: false, drink: true });
-    getMenu("drink");
   };
 
   return (
     <>
       <MainBackground>
         <CategoryButtonWrapper>
-          <RecommendationButton onClick={clickRecommendationButton} isClicked={currentMenu.recommendation}>
-            추천 메뉴
-          </RecommendationButton>
-          <BurgerButton onClick={clickBurgerButton} isClicked={currentMenu.burger}>
-            버거&세트
-          </BurgerButton>
-          <SnackButton onClick={clickSnaksButton} isClicked={currentMenu.snacks}>
-            스낵&사이드
-          </SnackButton>
-          <DrinkButton onClick={clickDrinkButton} isClicked={currentMenu.drink}>
-            음료
-          </DrinkButton>
+          {[Categories.RECOMMEND, Categories.BURGER, Categories.SNACK, Categories.DRINK].map(
+            (category: string, index: number) => {
+              return (
+                <CategoryButton
+                  key={index}
+                  onClick={onClickCategoryButton}
+                  isClicked={currentMenu === category ? true : false}>
+                  {category}
+                </CategoryButton>
+              );
+            },
+          )}
         </CategoryButtonWrapper>
         <MenuWrapper>
           {menus.map((item: iItem) => {
@@ -99,38 +97,8 @@ const CategoryButtonWrapper = styled.div`
   padding: 1.6rem 1rem 1.6rem 2rem;
 `;
 
-const RecommendationButton = styled.button<{ isClicked: boolean }>`
+const CategoryButton = styled.button<{ isClicked: boolean }>`
   width: 7.4rem;
-  height: 4rem;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 1rem;
-  border-radius: 2rem;
-`;
-
-const BurgerButton = styled.button<{ isClicked: boolean }>`
-  width: 8.7rem;
-  height: 4rem;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 1rem;
-  border-radius: 2rem;
-`;
-
-const SnackButton = styled.button<{ isClicked: boolean }>`
-  width: 9.9rem;
-  height: 4rem;
-  background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
-  color: ${theme.colors.white};
-  padding: 1rem;
-  border-radius: 2rem;
-`;
-
-const DrinkButton = styled.button<{ isClicked: boolean }>`
-  width: 4.6rem;
   height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
   ${theme.fonts.body4};

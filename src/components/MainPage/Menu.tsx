@@ -19,13 +19,13 @@ export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iIte
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
-  const gotoDeatil = (menuId: number) => {
+  const gotoDetail = (menuId: number) => {
     navigate(`/menu/${menuId}`);
   };
 
   return (
     <>
-      <MenuBox onClick={() => gotoDeatil(menuId)}>
+      <MenuBox onClick={() => gotoDetail(menuId)}>
         <MenuImage src={burger_image}></MenuImage>
         <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
