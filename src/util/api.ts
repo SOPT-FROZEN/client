@@ -1,6 +1,13 @@
 // api 모듈을 선언하는 파일입니다
 import axios from "axios";
 
+export interface iSetInfo {
+  menuId: number;
+  largeSet: number;
+  basicSet: number;
+  only: number;
+}
+
 // 장바구니 조회 GET API
 export const getCartAPI = async () => {
   try {
@@ -22,10 +29,11 @@ export const getMenuDetail = async (menuId: string) => {
 };
 
 // 장바구니 담기 POST API
-export const postCartAPI = async (menuId: string, large: number, basicSet: number, only: number) => {
+
+export const postCartAPI = async (menuId: string, largeSet: number, basicSet: number, only: number) => {
   try {
     const res = await axios.post(`/cart/${menuId}`, {
-      largeSet: large,
+      largeSet: largeSet,
       set: basicSet,
       only: only,
     });
@@ -34,3 +42,16 @@ export const postCartAPI = async (menuId: string, large: number, basicSet: numbe
     console.log(error);
   }
 };
+
+// export const postCartAPI = async ({ menuId, largeSet, basicSet, only }: iSetInfo) => {
+//   try {
+//     const res = await axios.post(`/cart/${menuId}`, {
+//       largeSet: largeSet,
+//       set: basicSet,
+//       only: only,
+//     });
+//     return res;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

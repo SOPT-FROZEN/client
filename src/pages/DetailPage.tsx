@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset";
+import { BurgerImage, BackIcon } from "../assets/image/asset";
 import Allergy from "../components/common/Allergy";
-import { useParams } from "react-router-dom";
-import { getMenuDetail, postCartAPI } from "../util/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { getMenuDetail, postCartAPI, iSetInfo } from "../util/api";
 import { priceToString } from "../util/priceToString";
 import Counter from "../components/common/Counter";
 
@@ -23,6 +23,14 @@ export default function DetailPage() {
   const [largeCount, setLargeCount] = useState(1);
   const [basicSetCount, setBasicSetCount] = useState(0);
   const [onlyCount, setOnlyCount] = useState(0);
+  const navigate = useNavigate();
+
+  // const [orderSetInfo, setOrderSetInfo] = useState<iSetInfo>({
+  //   menuId: 0,
+  //   largeSet: 1,
+  //   basicSet: 0,
+  //   only: 0,
+  // });
 
   const [detailInfo, setDetailInfo] = useState<iDetailInfo>({
     menuId: 0,
@@ -48,7 +56,7 @@ export default function DetailPage() {
   return (
     <DetailBackground>
       <DetailTitle>
-        <DetailBackIcon src={BackIcon}></DetailBackIcon>
+        <DetailBackIcon src={BackIcon} onClick={() => navigate("/")}></DetailBackIcon>
         버거 & 세트
       </DetailTitle>
       <DetailDividingLine></DetailDividingLine>
@@ -80,6 +88,14 @@ export default function DetailPage() {
           ) : (
             <Counter count={onlyCount} setCount={setOnlyCount}></Counter>
           )}
+
+          {/* {set === "라지세트" ? (
+            <Counter count={orderSetInfo.largeSet} setCount={setOrderSetInfo}></Counter>
+          ) : set === "세트" ? (
+            <Counter count={orderSetInfo.basicSet} setCount={setOrderSetInfo}></Counter>
+          ) : (
+            <Counter count={orderSetInfo.only} setCount={setOrderSetInfo}></Counter>
+          )} */}
         </AddSetBoard>
       ))}
 
