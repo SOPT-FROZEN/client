@@ -36,7 +36,6 @@ export default function MainPage() {
     navigate(location.state, {});
     getMenu("burger");
     getCartAPI().then((result) => {
-      console.log(result.data);
       for (let i = 0; i < result.data.length; i++) {
         setQuantity((quantity) => quantity + result.data[i].details.length);
       }
