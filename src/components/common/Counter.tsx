@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { CartMinusIcon, CartPlusIcon } from "../../assets/image/asset";
 import theme from "../../styles/theme";
+
 interface iCountProps {
   count: number;
   setCount: Dispatch<SetStateAction<number>>;
