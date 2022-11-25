@@ -1,14 +1,28 @@
 // 결제페이지
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import PaymentMethod from "../components/PayPage/PaymentMethodContainer";
+import { getCartAPI } from "../util/api";
+import { iOrder } from "./CartPage";
+import { priceToString } from "../util/priceToString";
 
 export default function PayPage() {
-  const price = 9900;
-  const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
-  const totalPrice: string = price.toString().replace(priceRegex, ",");
-  const detailPrice: string = price.toString().replace(priceRegex, ",");
+  const [receipt, setReceipt] = useState<iOrder[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    // receipt/total을 통해서 totalPrice 업데이트
+    receipt.map((order) => {
+      setTotalPrice((prev) => (prev += order.total));
+    });
+  }, [receipt]);
+
+  useEffect(() => {
+    // 장바구니 정보 불러와서 receipt에 저장
+    getCartAPI().then((result) => setReceipt(result.data));
+  }, []);
+
   return (
     <>
       <PaymentBackground>
@@ -18,12 +32,18 @@ export default function PayPage() {
       <PaymentButtonWrapper>
         <TotalPriceWrapper>
           <TotalPriceTitle>총액</TotalPriceTitle>
-          <TotalPrice>￦ {totalPrice}</TotalPrice>
+          <TotalPrice>￦ {priceToString(totalPrice)}</TotalPrice>
         </TotalPriceWrapper>
-        <DetailPriceWrapper>
-          <DetailPriceTitle>라지 세트 (1)</DetailPriceTitle>
-          <DetailPrice>￦ {detailPrice}</DetailPrice>
-        </DetailPriceWrapper>
+        <DetailWrapper>
+          {receipt.map((order, index) => (
+            <DetailPriceWrapper key={index}>
+              <DetailPriceTitle>
+                {order.title} ({order.details.length})
+              </DetailPriceTitle>
+              <DetailPrice>￦ {priceToString(order.total)}</DetailPrice>
+            </DetailPriceWrapper>
+          ))}
+        </DetailWrapper>
         <PaymentButton>결제</PaymentButton>
       </PaymentButtonWrapper>
     </>
@@ -45,7 +65,6 @@ const PayTitle = styled.h1`
 
 const PaymentButtonWrapper = styled.div`
   width: 37.5rem;
-  height: 20.5rem;
   background-color: ${theme.colors.white};
   display: flex;
   flex-direction: column;
@@ -55,7 +74,7 @@ const PaymentButtonWrapper = styled.div`
 const TotalPriceWrapper = styled.div`
   width: 33.5rem;
   height: 2rem;
-  margin: 2.8rem 0;
+  margin-top: 2.8rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -73,10 +92,14 @@ const TotalPrice = styled.span`
   font-weight: bold;
 `;
 
+const DetailWrapper = styled.div`
+  margin-top: 3rem;
+`;
+
 const DetailPriceWrapper = styled.div`
   width: 33.5rem;
   height: 2rem;
-  margin: 0.2rem 0;
+  margin: 1rem 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -84,18 +107,17 @@ const DetailPriceWrapper = styled.div`
 `;
 
 const DetailPriceTitle = styled.h1`
-  font-size: 1.6rem;
+  ${theme.fonts.body2};
   color: ${theme.colors.gray800};
 `;
 
 const DetailPrice = styled.span`
   color: ${theme.colors.green};
-  font-size: 2.2rem;
-  font-weight: bold;
+  ${theme.fonts.subtitle1};
 `;
 
 const PaymentButton = styled.div`
-  background-color: ${theme.colors.red};
+  background-color: #d14938;
   ${theme.fonts.title2}
   border-radius: 1rem;
   display: flex;
@@ -106,4 +128,5 @@ const PaymentButton = styled.div`
   margin: 2.4rem 2rem 3.3rem 2rem;
   color: ${theme.colors.white};
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 `;
