@@ -56,7 +56,7 @@ const MenuName = styled.div`
   ${theme.fonts.caption1};
   color: ${theme.colors.gray800};
   margin-bottom: 0.5rem;
-  width: 12rem;
+  width: 14rem;
   height: 2rem;
 `;
 
