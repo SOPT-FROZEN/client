@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { BurgerImage, BackIcon, RemoveSet, AddSet } from "../assets/image/asset";
+import { BurgerImage, BackIcon } from "../assets/image/asset";
 import Allergy from "../components/common/Allergy";
-import { useParams } from "react-router-dom";
-import { getMenuDetail } from "../util/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { getMenuDetail, postCartAPI, iSetInfo } from "../util/api";
 import { priceToString } from "../util/priceToString";
 import Counter from "../components/common/Counter";
 
@@ -18,13 +18,20 @@ export interface iDetailInfo {
   allergy: Array<"pig" | "cow" | "tomato" | "chicken" | "lettuce">;
 }
 
-type HeaderProps = {
-  children: JSX.Element;
-};
-
 export default function DetailPage() {
   const { menuId } = useParams();
-  const [count, setCount] = useState(1);
+  const [largeCount, setLargeCount] = useState(1);
+  const [basicSetCount, setBasicSetCount] = useState(0);
+  const [onlyCount, setOnlyCount] = useState(0);
+  const navigate = useNavigate();
+
+  // const [orderSetInfo, setOrderSetInfo] = useState<iSetInfo>({
+  //   menuId: 0,
+  //   largeSet: 1,
+  //   basicSet: 0,
+  //   only: 0,
+  // });
+
   const [detailInfo, setDetailInfo] = useState<iDetailInfo>({
     menuId: 0,
     menuName: "",
@@ -40,10 +47,16 @@ export default function DetailPage() {
     }
   }, [menuId]);
 
+  const handleClick = () => {
+    {
+      menuId && postCartAPI(menuId, largeCount, basicSetCount, onlyCount);
+    }
+  };
+
   return (
     <DetailBackground>
       <DetailTitle>
-        <DetailBackIcon src={BackIcon}></DetailBackIcon>
+        <DetailBackIcon src={BackIcon} onClick={() => navigate("/")}></DetailBackIcon>
         버거 & 세트
       </DetailTitle>
       <DetailDividingLine></DetailDividingLine>
@@ -68,7 +81,21 @@ export default function DetailPage() {
               set === "라지세트" ? detailInfo.priceLarge : set === "세트" ? detailInfo.priceSet : detailInfo.priceOnly,
             )}
           </AddSetBoardPrice>
-          <Counter count={count} setCount={setCount}></Counter>
+          {set === "라지세트" ? (
+            <Counter count={largeCount} setCount={setLargeCount}></Counter>
+          ) : set === "세트" ? (
+            <Counter count={basicSetCount} setCount={setBasicSetCount}></Counter>
+          ) : (
+            <Counter count={onlyCount} setCount={setOnlyCount}></Counter>
+          )}
+
+          {/* {set === "라지세트" ? (
+            <Counter count={orderSetInfo.largeSet} setCount={setOrderSetInfo}></Counter>
+          ) : set === "세트" ? (
+            <Counter count={orderSetInfo.basicSet} setCount={setOrderSetInfo}></Counter>
+          ) : (
+            <Counter count={orderSetInfo.only} setCount={setOrderSetInfo}></Counter>
+          )} */}
         </AddSetBoard>
       ))}
 
@@ -91,7 +118,9 @@ export default function DetailPage() {
           <AddToCartSetName>라지 세트 (1)</AddToCartSetName>
           <AddToCartSetPrice>₩ {priceToString(detailInfo.priceLarge)}</AddToCartSetPrice>
         </AddToCartSetInfoWrap>
-        <AddToCartButton type="button">장바구니에 담기</AddToCartButton>
+        <AddToCartButton type="button" onClick={handleClick}>
+          장바구니에 담기
+        </AddToCartButton>
       </AddToCartModal>
     </DetailBackground>
   );
