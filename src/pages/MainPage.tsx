@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // 메뉴 전체 보여줄 메인페이지
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
@@ -124,10 +125,9 @@ const CategoryButtonWrapper = styled.div`
 `;
 
 const CategoryButton = styled.button<{ isClicked: boolean }>`
-  width: 7.4rem;
   height: 4rem;
   background-color: ${({ isClicked }) => (isClicked ? `${theme.colors.red}` : "#d9d9d9")};
-  ${theme.fonts.body4};
+  ${theme.fonts.body3};
   color: ${theme.colors.white};
   padding: 1rem;
   border-radius: 2rem;
