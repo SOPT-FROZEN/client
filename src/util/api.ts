@@ -52,16 +52,3 @@ export const postCartAPI = async (menuId: string, largeSet: number, basicSet: nu
     console.log(error);
   }
 };
-
-// export const postCartAPI = async ({ menuId, largeSet, basicSet, only }: iSetInfo) => {
-//   try {
-//     const res = await axios.post(`/cart/${menuId}`, {
-//       largeSet: largeSet,
-//       set: basicSet,
-//       only: only,
-//     });
-//     return res;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

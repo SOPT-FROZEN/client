@@ -40,7 +40,7 @@ export default function DetailPage() {
       menuId &&
         postCartAPI(menuId, largeCount, basicSetCount, onlyCount).then((result) => {
           if (result?.data.status === 200) {
-            navigate("/");
+            navigate("/", { state: { containCart: true } });
           }
         });
     }

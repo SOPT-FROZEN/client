@@ -1,10 +1,11 @@
 // 메뉴 전체 보여줄 메인페이지
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import Menu from "../components/MainPage/Menu";
 import { getCartAPI, getCategorydMenu } from "../util/api";
-import { useNavigate } from "react-router-dom";
 
 export interface iItem {
   menuId: number;
@@ -16,6 +17,7 @@ export interface iItem {
 
 export default function MainPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [quantity, setQuantity] = useState<number>(0);
   const [menus, setMenus] = useState<iItem[]>([]);
   const Categories = {
@@ -26,15 +28,26 @@ export default function MainPage() {
   };
   const [isBuyButtonActive, setIsBuyButtonActive] = useState(false);
 
-  const [currentMenu, setCurrentMenu] = useState(Categories.RECOMMEND);
+  const [currentMenu, setCurrentMenu] = useState(Categories.BURGER);
+
+  const [isModal, setIsModal] = useState(location.state === null ? false : true);
 
   useEffect(() => {
+    navigate(location.state, {});
     getMenu("burger");
     getCartAPI().then((result) => {
-      setQuantity(result.data.length);
+      for (let i = 0; i < result.data.length; i++) {
+        setQuantity((quantity) => quantity + result.data[i].details.length);
+      }
       result.data.length > 1 && setIsBuyButtonActive(true);
     });
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsModal(false);
+    }, 1500);
+  }, [isModal]);
 
   const onClickCategoryButton = (e: { currentTarget: { innerText: string } }) => {
     if (e.currentTarget.innerText === Categories.RECOMMEND) {
@@ -92,6 +105,7 @@ export default function MainPage() {
           isBuyButtonActive={isBuyButtonActive}>
           구매하기({quantity})
         </BuyButton>
+        {isModal && <Modal>장바구니에 메뉴를 담았습니다.</Modal>}
       </MainBackground>
     </>
   );
@@ -144,4 +158,25 @@ const BuyButton = styled.button<{ isBuyButtonActive: boolean }>`
   margin: 0 2rem;
   box-shadow: 0 0.3rem 1.3rem 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
+`;
+
+const Modal = styled.section`
+  width: 33.5rem;
+  margin: 0 2rem;
+
+  z-index: 999;
+  background-color: #333d4b;
+  color: white;
+  ${theme.fonts.caption3};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  height: 5rem;
+  bottom: 554px;
+
+  border-radius: 0.8rem;
 `;
