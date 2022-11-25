@@ -46,6 +46,7 @@ const fonts = {
   body4: FONT({ weight: 600, size: 1.3, lineHeight: 20, letterSpacing: 5 }),
   caption1: FONT({ weight: 600, size: 1.4, lineHeight: 20, letterSpacing: 5 }),
   caption2: FONT({ weight: 500, size: 1.4, lineHeight: 20, letterSpacing: 5 }),
+  caption3: FONT({ weight: 400, size: 1.4, lineHeight: 20, letterSpacing: 5 }),
 } as const;
 
 const theme = {

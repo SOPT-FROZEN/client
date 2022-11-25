@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import Allergy from "../common/Allergy";
@@ -13,16 +12,15 @@ interface iItemProps {
   menuId: number;
 }
 
-export default function Menu({ menuName, allergy, priceOnly, key, menuId }: iItemProps) {
+export default function Menu({ menuName, allergy, priceOnly, menuId }: iItemProps) {
   const navigate = useNavigate();
   const price = priceOnly;
   const priceRegex = /\B(?=(\d{3})+(?!\d))/g;
   const menuPrice: string = price.toString().replace(priceRegex, ",");
 
-
   return (
     <>
-      <MenuBox onClick={() => navigate(`/${menuId}`)}>
+      <MenuBox onClick={() => navigate(`/menu/${menuId}`)}>
         <MenuImage src={burger_image}></MenuImage>
         <MenuName>{menuName}</MenuName>
         <MenuAllergyList>
