@@ -37,7 +37,9 @@ export default function MainPage() {
     getMenu("burger");
     getCartAPI().then((result) => {
       console.log(result.data);
-      setQuantity(result.data.length);
+      for (let i = 0; i < result.data.length; i++) {
+        setQuantity((quantity) => quantity + result.data[i].details.length);
+      }
       result.data.length > 1 && setIsBuyButtonActive(true);
     });
   }, []);
