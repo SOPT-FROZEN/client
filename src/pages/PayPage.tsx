@@ -19,6 +19,7 @@ export default function PayPage() {
   }, [receipt]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // 장바구니 정보 불러와서 receipt에 저장
     getCartAPI().then((result) => setReceipt(result.data));
   }, []);

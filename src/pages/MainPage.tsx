@@ -34,13 +34,14 @@ export default function MainPage() {
   const [isModal, setIsModal] = useState(location.state === null ? false : true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     navigate(location.state, {});
     getMenu("burger");
     getCartAPI().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         setQuantity((quantity) => quantity + result.data[i].details.length);
       }
-      result.data.length > 1 && setIsBuyButtonActive(true);
+      setIsBuyButtonActive(true);
     });
   }, []);
 

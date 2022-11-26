@@ -47,6 +47,10 @@ export default function DetailPage() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     {
       menuId && getMenuDetail(menuId).then((result) => setDetailInfo(result.data));
     }
